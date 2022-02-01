@@ -1,0 +1,116 @@
+.header{
+  display: flex;
+  justify-content: space-between
+  ;
+  font-family: 'Helvetica Neue', sans-serif;
+  max-width: 1440px;
+  margin: 30px auto 0;
+  padding-bottom: 9px;
+  border-bottom: 1px solid #ebf6de;
+  .burger{
+    display: flex;
+    align-items: center;
+  }
+  .logo{
+    display: inline-flex;
+    flex-direction: row;
+    flex-grow: 1;
+    margin-left: 10px;
+    align-items: center;
+    cursor: pointer;
+    img{
+      margin-right: 10px;
+      max-width: 45px;
+    }
+    p{
+      min-width: 130px;
+      font-weight: 500;
+    }
+  }
+  .wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .menu{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      font-size: 16px;
+      li{
+        margin-right: 35px;
+        position: relative;
+        cursor: pointer;
+        a{
+          font-family: 'Helvetica 35 Thin', sans-serif;
+          text-decoration: none;
+          &:active{
+            color: #000;
+          }
+        }
+      }
+      li::after{
+        position: absolute;
+        content:'';
+        width: 100%;
+        bottom: -25px;
+        left: 0;
+        border-bottom: 2px solid transparent;
+      }
+      li:hover::after{
+        border-bottom: 2px solid #1E4DFC;
+      }
+    }
+  }
+  .login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    span{
+      margin-right: 10px;
+    }
+  }
+}
+@media only screen and (min-width: 768px){
+  .header{
+
+    .burger{
+      display: none;
+    }
+    .logo{
+      flex-grow: 0;
+    }
+  }
+}
+.menuWrapper{
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  width: 85%;
+  left: 15px;
+  top: 75px;
+  font-family: 'Helvetica 35 Thin ', sans-serif;
+  h3{
+    font-weight: 500;
+  }
+  .navMenu{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    margin-left: 10px;
+    padding-left: 10px;
+    line-height: 50px;
+    list-style-type: none;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    .menu_transfers{
+      list-style-type: none;
+      padding-left: 12px;
+    }
+  }
+}
