@@ -20,10 +20,7 @@ const Login = () => {
 
 
   const [values, setValues] = useState({
-    amount: '',
     password: '',
-    weight: '',
-    weightRange: '',
     showPassword: false,
   });
 
