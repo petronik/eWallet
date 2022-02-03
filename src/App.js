@@ -3,6 +3,9 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import Header from './components/Header/Header';
 import Login from './components/Login/Login';
 import Register from './components/Register/Register'
+import Overview from './components/Overview/Overview';
+import Archive from './components/Archive/Archive';
+import Transfers from './components/Transfers/Transfers';
 
 function App() {
   return (
@@ -11,6 +14,9 @@ function App() {
       <Routes>
         <Route path='/' element={<Login/>}/>
         <Route path='/register' element={<Register/>}/>
+        <Route path='/overview' element={<Overview/>}/>
+        <Route path='/transfers' element={<Transfers/>}/>
+        <Route path='/archive' element={<Archive/>}/>
       </Routes>
     </BrowserRouter>
   );

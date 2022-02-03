@@ -39,7 +39,7 @@ const Logout = () => {
 const Header = () => {
   
   const isMobile = useMediaQuery({ maxWidth: 768})
-  const [isLoggedIn, setLoggedIn] = useState(true)
+  const [isLoggedIn] = useState(true)
 
   return (
     <header className={styles.header}>
