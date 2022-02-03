@@ -49,9 +49,10 @@ const Register = () => {
     <div className={styles.loginContainer}>
       <div className={styles.loginWrapper}>
       <h1>Create an account</h1>
-      <p>Gain access to additional features such as Watchlist <br/> and Portfolio tracking. Already have an account? <span>
-      <Link to='/' >Log in</Link>
-      </span>
+      <p>Gain access to additional features such as Watchlist <br/> and Portfolio tracking. Already have an account?  
+        <span>
+          <Link to='/' >Log in</Link>
+        </span>
       </p>
       
       <form noValidate autoComplete='off' onSubmit={handleSubmit}>

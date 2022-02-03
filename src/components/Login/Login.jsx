@@ -45,6 +45,7 @@ const Login = () => {
     e.preventDefault()
     
     if(email && values.password) {
+      console.log(email + " " + values.password)
       console.log(document.querySelector('#submitBtn'))
       document.querySelector('#submitBtn').removeAttribute('disabled')
     }

@@ -90,6 +90,9 @@
   display: flex;
   flex-direction: column;
   position: fixed;
+  background: #fff;
+  z-index: 9;
+  padding: 10px;
   width: 85%;
   left: 15px;
   top: 75px;
