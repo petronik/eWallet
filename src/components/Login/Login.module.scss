@@ -1,0 +1,24 @@
+.loginContainer{
+  text-align: center;
+  font-family: 'Helvetica', sans-serif;
+  margin-top: 80px;
+  .loginWrapper{
+    max-width: 510px;
+    margin: 0 auto;
+    h1{
+      font-weight: 700;
+    }
+    p > span > a{
+      text-decoration: none;
+      color: #1e4dfc;
+    }
+    form{
+      display: flex;
+      flex-direction: column;
+      span{
+        align-self: flex-end;
+        margin: 10px 0;
+      }
+    }
+  }
+}
