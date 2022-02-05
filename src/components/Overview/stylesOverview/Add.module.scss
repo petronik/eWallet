@@ -1,0 +1,11 @@
+.addon{
+  grid-column: 2 / 3;
+  grid-row: 1/2;
+  background: url('../../../assets/img/Rectangle.svg') no-repeat;
+  background-size: cover;
+  padding: 24px;
+  font-family: 'Helvetica Neue 35 Light', sans-serif;
+  h2{
+    margin-top: 0;
+  }
+}

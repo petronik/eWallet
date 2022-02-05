@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-import styles from './Overview.module.scss'
+import styles from './stylesOverview/TotalBalanceBox.module.scss'
 
 const currencies = [
   {
