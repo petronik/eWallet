@@ -1,0 +1,83 @@
+.containerWrapper{
+  grid-column: 2/3;
+  grid-row: 2/4;
+  background: linear-gradient(to bottom, #e8ebef, #fff);
+  padding: 1px;
+  border-radius: 6px;
+  overflow: auto;
+  .container {
+    background: #fff;
+    padding: 0 16px;
+    .containerHeader{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      h4{
+        flex: 1
+      }
+      .searchWrapper{
+        display: flex;
+        align-items: center;
+        margin-right: 10px;
+        background: #f3f5f7;
+        padding: 12px 8px;
+        border-radius: 6px;
+        input{
+          border: 0;
+          background: transparent;
+          &:focus-visible{
+            outline: none;
+          }
+        }
+      }
+      span{
+        cursor: pointer;
+      }
+    }
+
+    .transactionsList{
+      .listItemBox{
+        .listItemHeader{
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          color: #77828F;
+          .listItemDate{
+            text-transform: uppercase;
+            font-weight: 400;
+          }
+        }
+        ul{
+          list-style-type: none;
+          padding: 0;
+          >li{
+            margin: 10px 0;
+          }
+        }
+      }
+    }
+  }
+}
+.listWrapper{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  .listData{
+    flex:1;
+    margin-left: 16px;
+     >p{
+      margin: 0;
+    }
+    & >span{
+      color: rgba(27, 43, 65, 0.72);
+      font-size: 13px;
+    }
+  }
+  .topupAmount{
+    color: #00A344;
+  }
+  .withdrawAmount{
+    color: #F52419;
+  }
+}

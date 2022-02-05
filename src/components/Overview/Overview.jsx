@@ -1,8 +1,9 @@
 import React from 'react';
-import Add from './Add';
+import AddOn from './AddOn';
 import TotalBalanceBox from './TotalBalanceBox';
 import TransfersAndPayments from './TransfersAndPayments';
 import ChartBox from './ChartBox'
+import LatesTransactions from './LatesTransactions';
 
 import styles from './stylesOverview/Overview.module.scss'
 
@@ -13,9 +14,10 @@ const Overview = () => {
   return (
     <div className={styles.container}>
       <TotalBalanceBox/>
-      <Add/>
+      <AddOn/>
       <TransfersAndPayments/>
       <ChartBox/>
+      <LatesTransactions/>
     </div>
   );
 };
