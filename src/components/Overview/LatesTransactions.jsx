@@ -10,14 +10,14 @@ import styles from './stylesOverview/LatesTransactions.module.scss'
 
 const TopUp = () => {
   return (
-  <div className={styles.listWrapper}>
+  <section className={styles.listWrapper}>
     <img src={TopUpIcon} alt="Top up icon" />
     <div className={styles.listData}>
       <p><span>From:</span>Kate Abba</p>
       <span>Top up card</span>
     </div>
     <div className={styles.topupAmount}>+ $<span>6 425.00</span></div>
-  </div>
+  </section>
   )
 }
 const TransferMoney = () => {
@@ -127,6 +127,7 @@ const LatesTransactions = () => {
         </div>
       </div>
       </div>
+      <div className={styles.bottomFade} ></div>
     </div>
   );
 };

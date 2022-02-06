@@ -62,7 +62,7 @@ const SelectCurrency = () => {
 
 const TotalBalanceBox = () => {
   return (
-    <div className={styles.totalBalanceBox}>
+    <section className={styles.totalBalanceBox}>
         <p>Account details</p>
         <div className={styles.totalBalanceBoxItem}>
           <h6>TOTAL BALANCE</h6>
@@ -72,7 +72,7 @@ const TotalBalanceBox = () => {
           </div>
             <MeterBar/>
         </div>
-      </div>
+      </section>
   );
 };
 

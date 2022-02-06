@@ -35,7 +35,7 @@ const options = {
 
 const ChartBox = () => {
   return (
-    <div className={styles.chartContainerWrap}>
+    <section className={styles.chartContainerWrap}>
       <div className={styles.chartContainer}>
         <div className={styles.header}>
           <h3>Chart</h3>
@@ -59,7 +59,7 @@ const ChartBox = () => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

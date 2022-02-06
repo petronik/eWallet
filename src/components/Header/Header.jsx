@@ -22,15 +22,15 @@ const Login = () => {
       </div>
   )
 }
-const Logout = () => {
-  const navigate = useNavigate();
+const UserAvatar = () => {
+  // const navigate = useNavigate();
   return (
     <div className={styles.login}>
         <span
-          onClick={() => navigate('/')}
-        >Log out
+          
+        >DSH
         </span>
-          <img src={logIn} alt="Log in" />
+        
       </div>
   )
 }
@@ -53,7 +53,7 @@ const Header = () => {
       { isLoggedIn && !isMobile  && <Navbar/>}
       
       { !isLoggedIn && <Login/>}
-      { isLoggedIn && <Logout/>}
+      { isLoggedIn && <UserAvatar/>}
 
     </header>
   );

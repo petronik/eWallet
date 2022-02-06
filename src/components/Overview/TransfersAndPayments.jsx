@@ -7,7 +7,7 @@ import styles from './stylesOverview/TransfersAndPayments.module.scss'
 
 const TransfersAndPayments = () => {
   return (
-    <div className={styles.transfersContainer} >
+    <section className={styles.transfersContainer} >
       <h3>Transfers and Payments</h3>
       <div className={styles.transfersButtonBlock}>
         <div className={styles.transfersButton}>
@@ -20,10 +20,10 @@ const TransfersAndPayments = () => {
         </div>
         <div className={styles.transfersButton}>
           <img src={Withdraw} alt="Withdraw icon" />
-          <span>Withdraw</span>
+          <span>Other payments</span>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

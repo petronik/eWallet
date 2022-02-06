@@ -11,7 +11,7 @@ const ReadMoreButton = styled(Button)({
 
 const Add = () => {
   return (
-    <div className={styles.addon}>
+    <section className={styles.addon}>
       <h2>
       Get exclusive discounts for any <br/> payment method
       </h2>
@@ -21,7 +21,7 @@ const Add = () => {
       >
         Read more
       </ReadMoreButton>
-    </div>
+    </section>
   );
 };
 

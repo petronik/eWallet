@@ -25,7 +25,7 @@
       select{
         margin-left: 24px;
         background: transparent;
-        font-size: calc(12px + 2vmax);
+        font-size: calc(10px + 2vmax);
         color: #fff;
         border: 0;
         option{
@@ -58,4 +58,35 @@
     }
 
   }
+}
+
+@media only screen and (max-width: 768px) {
+  .totalBalanceBox{
+    
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(#8B75FF, #fff);
+    border-radius: 10px;
+    p{
+      order: 1;
+      text-align: center;
+      color: #1E4DFC;
+      font-weight: 100;
+    }
+    .totalBalanceBoxItem{
+      padding: 0 8px;
+      h6{
+        margin: 0;
+      }
+      .itemAmount{
+        font-size: calc(23px + 2vmax);
+        select{
+          optons{
+            font-size: calc(23px + 2vmax);
+          }
+        }
+      }
+    }
+  }
+  
 }
