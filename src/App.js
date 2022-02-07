@@ -6,6 +6,7 @@ import Register from './components/Register/Register'
 import Overview from './components/Overview/Overview';
 import Archive from './components/Archive/Archive';
 import Transfers from './components/Transfers/Transfers';
+import Account from './components/Account/Account'
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path='/overview' element={<Overview/>}/>
         <Route path='/transfers' element={<Transfers/>}/>
         <Route path='/archive' element={<Archive/>}/>
+        <Route path='/account' element={<Account/>}/>
       </Routes>
     </BrowserRouter>
   );

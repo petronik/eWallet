@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between
   ;
-  font-family: 'Helvetica Neue', sans-serif;
+  font-family: 'Helvetica 35 Thin', sans-serif;
   max-width: 1440px;
   margin: 30px auto 0;
   padding-bottom: 9px;
@@ -14,7 +14,7 @@
   .logo{
     display: inline-flex;
     flex-direction: row;
-    flex-grow: 1;
+    // flex-grow: 1;
     margin-left: 10px;
     align-items: center;
     cursor: pointer;
@@ -51,6 +51,7 @@
             color: #000;
           }
         }
+        
       }
       li::after{
         position: absolute;
@@ -74,10 +75,59 @@
       margin-right: 10px;
     }
   }
+  .userAvatar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Helvetica Neue 35 Light', sans-serif;
+    font-weight: 100;
+    font-size: 13px;
+    position: relative;
+    cursor: pointer;
+    .userAvatarPhoto{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-right: 10px;
+      width: 36px;
+      height: 36px;
+      background: #DF0B92;
+      border-radius: 50%;
+      color: #fff;
+    }
+    .userAvatarName{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-direction: row;
+    }
+    >ul{
+      position: absolute;
+      list-style-type: none;
+      left: 0;
+      top: 36px;
+      padding: 10px 40px 10px 10px;
+      border-radius : 4px;
+      box-shadow:0px 0px 15px -2px #BDC2C7;
+      background: #fff;
+      li{
+        line-height: 20px;
+        &:last-child{
+          margin-top: 20px;
+          color: #FF4238;
+        }
+      }
+    }
+  }
 }
-@media only screen and (min-width: 768px){
-  .header{
 
+.active{
+  border-bottom: 2px solid blue;
+  padding-bottom: 23px;
+}
+@media only screen and (max-width: 768px){
+  .header{
+    // margin: 30px 10px 10px 0;
     .burger{
       display: none;
     }
@@ -114,6 +164,11 @@
     .menu_transfers{
       list-style-type: none;
       padding-left: 12px;
+    }
+  }
+  .userAvatar{
+    .userAvatarName{
+      display: none;
     }
   }
 }
