@@ -1,11 +1,12 @@
-import React, {useState} from 'react';
-// import { Link } from 'react-router-dom';
+import React, {useState } from 'react';
+import { useNavigate} from 'react-router-dom';
 // import { menu } from './menu';
 import MenuToggle from './MenuToggle';
 import styles from './Header.module.scss'
 
 const MobileNavbar = (props) => {
   const [isOpen, setOpen] = useState(false);
+  const navigate = useNavigate();
   return (
     <div className={styles.wrapper} id='wrapper'>
       <MenuToggle isOpen={isOpen} toggle={() => setOpen(!isOpen)} />
@@ -13,15 +14,15 @@ const MobileNavbar = (props) => {
           <div className={styles.menuWrapper}>
             <h3>Menu</h3>
             <ul className={styles.navMenu}>
-              <li>Overview</li>
-              <li>Transfers
+              <li onClick={()=> navigate('/overview')} > Overview</li>
+              <li onClick={()=> navigate('/transfers')}>Transfers
                 <ul className={styles.menu_transfers}>
                   <li>Top up</li>
                   <li>Send money</li>
                   <li>Withdraw</li>
                 </ul>
               </li>
-              <li>Archive</li>
+              <li onClick={()=> navigate('/archive')}>Archive</li>
             </ul>
           </div>
           )}

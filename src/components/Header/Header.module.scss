@@ -53,17 +53,6 @@
         }
         
       }
-      li::after{
-        position: absolute;
-        content:'';
-        width: 100%;
-        bottom: -25px;
-        left: 0;
-        border-bottom: 2px solid transparent;
-      }
-      li:hover::after{
-        border-bottom: 2px solid #1E4DFC;
-      }
     }
   }
   .login{
@@ -121,10 +110,6 @@
   }
 }
 
-.active{
-  border-bottom: 2px solid blue;
-  padding-bottom: 23px;
-}
 @media only screen and (max-width: 768px){
   .header{
     // margin: 30px 10px 10px 0;
