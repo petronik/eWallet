@@ -1,10 +1,10 @@
-form {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  flex-grow: 1;
-  padding-bottom: 1rem;
-}
+// form {
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: space-evenly;
+//   flex-grow: 1;
+//   padding-bottom: 1rem;
+// }
 .instructions {
   font-size: 0.75rem;
   border-radius: 0.5rem;
@@ -21,6 +21,14 @@ form {
 .hide {
   display: none;
 }
+.show{
+  display: block;
+}
+.alingend{
+  align-self: end;
+  margin: -55px 15px 15px 0px;
+}
+
 
 .valid {
   color: limegreen;
@@ -59,9 +67,34 @@ form {
     }
     form{
       text-align: start;
-      // display: flex;
-      // flex-direction: column;
-      // align-items: start;
+      display: flex;
+      flex-direction: column;
+      label{
+        font-size: 12px;
+        margin-bottom: 8px;
+        margin-right: 8px;
+      }
+      input{
+        padding: 11px;
+        margin-bottom: 16px;
+        border: 1px solid rgba(28, 55, 90, 0.16);
+        outline: none;
+        border-radius: 4px;
+
+      }
+      
+      button{
+        padding: 11px 0;
+        color:#fff;
+        background: #1E4DFC;
+        border-radius: 4px;
+
+        &[disabled]{
+          background: rgba(28, 52, 84, 0.26);
+        }
+      }
+      
+      
       span{
         align-self: flex-end;
         margin: 10px 0;

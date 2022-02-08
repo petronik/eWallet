@@ -1,5 +1,5 @@
 import {useRef, useState, useEffect} from 'react';
-import { faCheck, faInfoCircle, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faInfoCircle, faTimes, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 import axios from '../api/axios';
@@ -18,7 +18,7 @@ import styles from './Register.module.scss'
 
 
 const USER_REGEX = /^[a-zA-z][a-zA-Z0-9-_@.]{3,40}$/;
-const PWD_REGEX = /^(?=.*[a-z]).{2,24}/;
+const PWD_REGEX = /^(?=.*[a-z])(?=.*[0-9]).{2,24}/;
 const REGISTER_URL = '/user/signup'
 
 const Register = () => {
@@ -47,6 +47,8 @@ const Register = () => {
   const [errMsg, setErrMsg] = useState('');
   const [success, setSuccess] = useState('');
 
+  const [showPassword, setShowPassword] = useState(false);
+
   useEffect(()=> {
     userRef.current.focus();
   }, [])
@@ -73,7 +75,9 @@ const Register = () => {
 
 
 
-
+  const togglePassword = () => {
+    setShowPassword(!showPassword)
+  }
 
 
   // const [values, setValues] = useState({
@@ -166,6 +170,7 @@ const Register = () => {
               onBlur={() => setUserFocus(false)}
             
             />
+
             
             <p className={userFocus && user && !validName ? styles.instructions : styles.offscreen}>
               <FontAwesomeIcon icon={faInfoCircle} />
@@ -186,13 +191,24 @@ const Register = () => {
             </label>
             <input 
               placeholder='Enter your password'
-              type="password"
+              type={ showPassword ? "text" : "password"}
               id='password'
               onChange={(e)=> setPwd(e.target.value)}
               required
               onFocus={() => setPwdFocus(true)}
               onBlur={() => setPwdFocus(false)}
             />
+            <div 
+              className={styles.alingend} 
+              onClick={togglePassword}>
+
+            <span className={showPassword ? styles.hide : styles.show}>
+              <FontAwesomeIcon icon={faEye} />
+            </span>
+            <span className={!showPassword ? styles.hide : styles.show} >
+              <FontAwesomeIcon icon={faEyeSlash} />
+            </span>
+            </div>
             <p className={pwdFocus && !validPwd ? styles.instructions : styles.offscreen}>
               <FontAwesomeIcon icon={faInfoCircle} />
               3 to 24 characters.<br/>
@@ -210,13 +226,25 @@ const Register = () => {
               </span>
             </label>
             <input  
-              type="password"
+              placeholder='Enter your password'
+              type={ showPassword ? "text" : "password"}
               id='confirm_pwd'
               onChange={(e)=> setMatchPwd(e.target.value)}
               required
               onFocus={() => setMatchFocus(true)}
               onBlur={() => setMatchFocus(false)}
             />
+            <div 
+              className={styles.alingend} 
+              onClick={togglePassword}>
+
+            <span className={showPassword ? styles.hide : styles.show}>
+              <FontAwesomeIcon icon={faEye} />
+            </span>
+            <span className={!showPassword ? styles.hide : styles.show} >
+              <FontAwesomeIcon icon={faEyeSlash} />
+            </span>
+            </div>
             <p className={matchFocus && !validMatch ? styles.instructions : styles.offscreen} >
               <FontAwesomeIcon icon={faInfoCircle}/>
               Must match the first password input field
