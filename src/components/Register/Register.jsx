@@ -2,7 +2,7 @@ import {useRef, useState, useEffect} from 'react';
 import { faCheck, faInfoCircle, faTimes, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
-import axios from '../api/axios';
+import axios from '../../api/axios';
 
 import styles from './Register.module.scss'
 // import TextField from '@mui/material/TextField';
@@ -18,7 +18,7 @@ import styles from './Register.module.scss'
 
 
 const USER_REGEX = /^[a-zA-z][a-zA-Z0-9-_@.]{3,40}$/;
-const PWD_REGEX = /^(?=.*[a-z])(?=.*[0-9]).{2,24}/;
+const PWD_REGEX = /^(?=.*[a-z]).{2,24}/;
 const REGISTER_URL = '/user/signup'
 
 const Register = () => {
@@ -113,7 +113,7 @@ const Register = () => {
           }
         );
         console.log(response.data);
-        console.log(response.accessToken);
+        console.log(response.hashed_password);
         console.log(JSON.stringify(response));
         setSuccess(true)
     }catch(err) {

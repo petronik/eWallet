@@ -26,13 +26,16 @@
     align-items: center;
 
     .chartDoughnut{
-      position: relative;
       width: 45%;
-      span{
-        position: absolute;
-        top: 39%;
-        left: 39%;
-        cursor: pointer;
+      canvas{
+        position: relative;
+        background: red;
+        .chartSpan{
+          position: absolute;
+          top: 50px;
+          left: 0;
+          cursor: pointer;
+        }
       }
     }
     .chartData{

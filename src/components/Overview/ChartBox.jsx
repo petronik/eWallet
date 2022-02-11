@@ -47,7 +47,7 @@ const ChartBox = () => {
         <div className={styles.chartWrapper}>
           <div className={styles.chartDoughnut}>
             <Doughnut data={data} options={options} />
-            <span>
+            <span className={styles.chartSpan}>
             <img src={SendIcon} alt="Send Icon" />
             <br />
             </span>
