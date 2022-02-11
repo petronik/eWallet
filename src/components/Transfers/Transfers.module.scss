@@ -1,0 +1,38 @@
+$borderGrey: #1C3454;
+
+section{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  max-width:1440px;
+  padding-top: 20px;
+  font-family: 'Inter', sans-serif;
+  margin:0 auto;
+  ul{
+    list-style: none;
+    li{
+      line-height: 2em;
+      a{
+        text-decoration: none;
+      }
+    }
+  }
+  .transferItemWrapper{
+    flex-basis: 50%;
+    .topUpAccount{
+      >div{
+        display: flex;
+        justify-content: space-between;
+        >span{
+          margin-right: 0;
+        }
+      }
+      form{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: start;
+      }
+    }
+  }
+}

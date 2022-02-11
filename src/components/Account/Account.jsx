@@ -5,9 +5,9 @@ import styles from './Account.module.scss'
 
 const Account = () => {
   return (
-    <div className={styles.containerAccount}>
+    <section className={styles.containerAccount}>
       Accoutn here...
-    </div>
+    </section>
   );
 };
 

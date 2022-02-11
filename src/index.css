@@ -1,6 +1,7 @@
 body {
   margin: 0;
   padding: 10px;
+  
 }
 @media only screen and (max-width: 768px) {
   body{
@@ -13,3 +14,8 @@ body {
   border-bottom: 2px solid blue;
   padding-bottom: 23px;
 }
+section{
+  max-width: 1440px;
+}
+
+

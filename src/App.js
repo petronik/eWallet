@@ -1,5 +1,5 @@
 import React from 'react';
-import RequireAuth from './components/RequireAuth'
+// import RequireAuth from './components/RequireAuth'
 import {Routes, Route} from 'react-router-dom'
 import Layout from './components/Layout'
 import Login from './components/Login/Login';
@@ -20,12 +20,12 @@ function App() {
         <Route path='register' element={<Register />}/>
 
         {/* protected routes */}
-        <Route element={ <RequireAuth /> }>
+        {/* <Route element={ <RequireAuth /> }> */}
           <Route path='overview' element={<Overview />}/>
           <Route path='transfers' element={<Transfers />}/>
           <Route path='archive' element={<Archive />}/>
           <Route path='account' element={<Account/>}/>
-        </Route>
+        {/* </Route> */}
       </Route>
     </Routes>
 
