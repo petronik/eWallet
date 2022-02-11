@@ -6,7 +6,6 @@ import Navbar from './Navbar'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import AuthContext from '../../context/AuthProvider';
 
-
 import styles from './Header.module.scss'
 import logoImage from '../../assets/img/logo.svg'
 import logIn from '../../assets/img/login.svg'
@@ -25,29 +24,19 @@ const Login = () => {
       </div>
   )
 }
-
-
-
 const Header = () => {
-  const navigate = useNavigate();
   const isMobile = useMediaQuery({ maxWidth: 768});
-  const [isLoggin, setIsLoggin] = useState(true);
   const {auth, setAuth } = useContext(AuthContext);
 
-  // if(auth.username ) {
-  //   setIsLoggin(true)
-  // }
+  
 
   const UserAvatar = () => {
     const navigate = useNavigate();
     const [show, setShow] = useState(false)
   
     const logout = async () => {
-      console.log(auth)
       setAuth({});
-      setIsLoggin(false)
       navigate('/');
-      console.log(auth)
     }
   
     return (
@@ -78,19 +67,17 @@ const Header = () => {
   return (
     <header className={styles.header}>
       
-      {isLoggin && isMobile && <MobileNavbar/>}
+      {auth?.username && isMobile && <MobileNavbar/>}
 
-      <div className={styles.logo}
-            onClick={() => navigate('/')}
-      >
+      <div className={styles.logo}>
         <img src={logoImage} alt="Bank Logo" />
         <p>Bank for people</p>
         
       </div>
-      { isLoggin && !isMobile  && <Navbar/>}
+      { auth?.username && !isMobile  && <Navbar/>}
       
-      { !isLoggin && <Login/>}
-      { isLoggin && <UserAvatar/>}
+      { !auth?.username && <Login/>}
+      { auth?.username && <UserAvatar/>}
 
     </header>
   );

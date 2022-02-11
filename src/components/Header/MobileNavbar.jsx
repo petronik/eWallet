@@ -1,6 +1,5 @@
 import React, {useState } from 'react';
 import { useNavigate} from 'react-router-dom';
-// import { menu } from './menu';
 import MenuToggle from './MenuToggle';
 import styles from './Header.module.scss'
 
