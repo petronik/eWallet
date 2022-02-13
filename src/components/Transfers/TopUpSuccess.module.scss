@@ -1,0 +1,16 @@
+.sectionTopUpSuccess {
+  display: flex;
+  justify-content: center;
+  // flex-direction: column;
+  color: red;
+  padding-top: 50px;
+  height: 80vh;
+  background: linear-gradient();
+  &__wrapper{
+    display: flex;
+    flex-direction: column;
+    max-width: 50%;
+    justify-content: center;
+    align-items: center;
+  }
+}

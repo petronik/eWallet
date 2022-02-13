@@ -1,7 +1,9 @@
 import React from 'react';
+// import { Routes, Route } from 'react-router-dom';
 import { Button } from '@mui/material';
 import styles from './Transfers.module.scss'
 import TopUpAccount from './TopUpAccount'
+import TopUpSuccess from './TopUpSuccess'
 import SideNav from './SideNav';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
@@ -18,14 +20,18 @@ const Transfers = () => {
 
 
   return (
-    <section>
+    <section className={styles.sectionTransfer}>
       <div className={styles.left}>
       <SideNav/>
       </div>
 
       <div className={styles.middle}>
-      <TopUpAccount/>
-
+        {/* <Routes>
+          <Route index element={<TopUpAccount/>} />
+          <Route path='/transfers' element={<TopUpSuccess/>} />
+        </Routes> */}
+        <TopUpAccount/>
+        <TopUpSuccess/>
 
       </div>
       

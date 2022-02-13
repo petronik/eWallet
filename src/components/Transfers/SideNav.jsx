@@ -30,6 +30,7 @@ const SideNav = () => {
                 style={({ isActive }) => ({
                   borderLeft: isActive ? '2px solid #1E4DFC' : '2px solid transparent',
                   paddingLeft: '4px',
+                  paddingBottom: '4px',
                   borderBottom: 0,
                   color: isActive ? '#1E4DFC' : '#000'
                 })}
@@ -41,7 +42,18 @@ const SideNav = () => {
         </ul>
         <ul>Archive
           <li>
-            <NavLink to={'/archive'} >Archive</NavLink>
+            <NavLink 
+              to={'/archive'}
+              style={({ isActive }) => ({
+                borderLeft: isActive ? '2px solid #1E4DFC' : '2px solid transparent',
+                paddingLeft: '4px',
+                paddingBottom: '4px',
+                borderBottom: 0,
+                color: isActive ? '#1E4DFC' : '#000'
+              })}
+            >
+              Archive
+            </NavLink>
           </li>
         </ul>
       </div>
