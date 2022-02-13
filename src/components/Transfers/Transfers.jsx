@@ -1,45 +1,44 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Button } from '@mui/material';
 import styles from './Transfers.module.scss'
 import TopUpAccount from './TopUpAccount'
+import SideNav from './SideNav';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
+const theme = createTheme({
+  palette: {
+    neutral: {
+      main: '#fff',
+      contrastText: '#fff',
+    },
+  },
+});
 
 const Transfers = () => {
-const menu = [
-  {
-    title: 'Top up card',
-    link: '/transfers/topupcard',
-  },
-  {
-    title: 'Send money',
-    link: '/transfers/sendmoney',
-  },
-  {
-    title: 'Withdraw',
-    link: '/transfers/withdraw',
-  },
-]
+
 
   return (
     <section>
-      <div>
-        <h5>Transfers</h5>
-        <ul>
-          {menu.map((item, indx) => (
-            <li key={`menu item${indx}`} >
-              <NavLink to={item.link}>{item.title}</NavLink>
-            </li>
-          ))}
-        </ul>
+      <div className={styles.left}>
+      <SideNav/>
       </div>
-      <div className={styles.transferItemWrapper}>
+
+      <div className={styles.middle}>
       <TopUpAccount/>
 
 
       </div>
       
-      <div>
-        <h3>Read the latest news on the system update  </h3>
+      <div className={styles.right}>
+        <h3>Read the latest news <br/> on the system update  </h3>
+        <ThemeProvider theme={theme}>
+
+        <Button
+          variant='outlined'
+          color="neutral"
+        >Read nore</Button>
+        </ThemeProvider>
+
       </div>
     </section>
   );

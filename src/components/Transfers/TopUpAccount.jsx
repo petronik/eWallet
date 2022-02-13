@@ -1,22 +1,41 @@
 import React from 'react'
-import styles from './Transfers.module.scss'
+import styles from './TopUpAccount.module.scss'
+import { Button } from '@mui/material';
+import TextField from '@mui/material/TextField';
+import InfoIcon from '@mui/icons-material/Info';
+
 
 const TopUpAccount = () => {
+
+const handleSubmit = (e) => {
+  e.preventDefault();
+  console.log(e)
+}
+
   return (
     <div className={styles.topUpAccount}>
-       <div>Top up account <span>O</span> </div> 
+       <div>Top up account <span className={styles.topupInfo}><InfoIcon/></span> </div> 
        <p>Amount</p>
-      <form >
-        <label htmlFor="transferAmount">Enter the amount</label>
-        <input 
-        type="text" 
-        id='transferAmount' 
-        placeholder='0.00$'
-        required
-        autoComplete='off'
-        />
-        <button >Top up</button>
-        <span>Cancel</span>
+      <form onSubmit={handleSubmit} >
+      <TextField id="outlined-basic" label="Enter the amount" variant="outlined" />
+      <Button 
+        sx={{
+          marginTop: '40px',
+        }}
+        
+        variant='contained'
+      >
+        Top up
+      </Button>
+      <Button
+        sx={{
+          marginTop: '40px',
+        }}
+        color="secondary"
+      >
+        Cancel
+      </Button>
+        
       </form>
     </div>
   )

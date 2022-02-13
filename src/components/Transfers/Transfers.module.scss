@@ -1,9 +1,10 @@
 $borderGrey: #1C3454;
 
 section{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  justify-items: stretch;
+  gap: 16px;
   max-width:1440px;
   padding-top: 20px;
   font-family: 'Inter', sans-serif;
@@ -17,22 +18,24 @@ section{
       }
     }
   }
-  .transferItemWrapper{
-    flex-basis: 50%;
-    .topUpAccount{
-      >div{
-        display: flex;
-        justify-content: space-between;
-        >span{
-          margin-right: 0;
-        }
-      }
-      form{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        text-align: start;
-      }
-    }
+  .left{
+    grid-column: 1/4;
+    border-radius: 6px;
+    background: linear-gradient(180deg, rgba(25, 59, 103, 0.05) 0%, rgba(25, 59, 103, 0) 100%), #FFFFFF;
+  
+  }
+  .middle{
+    grid-column: 4/10;
+    border-radius: 6px;
+    background: linear-gradient(180deg, rgba(25, 59, 103, 0.05) 0%, rgba(25, 59, 103, 0) 100%), #FFFFFF;
+  
+  }
+  .right{
+    grid-column: 10/13;
+    background: url('../../assets/img/bg_adds.png') no-repeat;
+    background-size: contain;
+    color: #fff;
+    padding:0 20px;
   }
 }
+

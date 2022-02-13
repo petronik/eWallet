@@ -1,0 +1,18 @@
+.topUpAccount{
+  padding: 20px 50px;
+  height: 80vh;
+  >div{
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+    >span{
+      margin-right: 20px;
+    }
+  }
+  form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: start;
+  }
+}
