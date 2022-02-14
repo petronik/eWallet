@@ -3,7 +3,7 @@ import {Outlet} from 'react-router-dom';
 import { Button } from '@mui/material';
 import styles from './Transfers.module.scss'
 import SideNav from './SideNav';
-import TopUpSuccess from './TopUpSuccess'
+// import TopUpSuccess from './TopUpSuccess'
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const theme = createTheme({
@@ -25,7 +25,6 @@ const Transfers = () => {
       </div>
       <div className={styles.middle}>
         <Outlet/>
-        <TopUpSuccess/>
       </div>
       <div className={styles.right}>
         <h3>Read the latest news <br/> on the system update  </h3>

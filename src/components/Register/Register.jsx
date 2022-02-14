@@ -1,7 +1,7 @@
 import {useRef, useState, useEffect} from 'react';
 import { faCheck, faInfoCircle, faTimes, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate} from 'react-router-dom';
 import axios from '../../api/axios';
 
 import styles from './Register.module.scss'
@@ -45,9 +45,9 @@ const Register = () => {
   const [matchFocus, setMatchFocus] = useState(false);
 
   const [errMsg, setErrMsg] = useState('');
-  const [success, setSuccess] = useState('');
 
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(()=> {
     userRef.current.focus();
@@ -55,15 +55,11 @@ const Register = () => {
 
   useEffect(()=> {
     const result = USER_REGEX.test(user);
-    console.log(result);
-    console.log(user);
     setValidName(result);
   }, [user])
 
   useEffect(()=> {
     const result = PWD_REGEX.test(pwd);
-    console.log(result);
-    console.log(pwd);
     setValidPwd(result);
     const match = pwd === matchPwd;
     setValidMatch(match);
@@ -73,34 +69,9 @@ const Register = () => {
     setErrMsg('');
   }, [user, pwd, matchPwd])
 
-
-
   const togglePassword = () => {
     setShowPassword(!showPassword)
   }
-
-
-  // const [values, setValues] = useState({
-  //   password: '',
-  //   showPassword: false,
-  // });
-
-  // const handleChange = (prop) => (event) => {
-  //   setValues({ ...values, [prop]: event.target.value });
-  // };
-
-  // const handleClickShowPassword = () => {
-  //   setValues({
-  //     ...values,
-  //     showPassword: !values.showPassword,
-  //   });
-  // };
-
-  // const handleMouseDownPassword = (event) => {
-  //   event.preventDefault();
-  // };
-  // const [email, setEmail] = useState('')
-
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -113,9 +84,7 @@ const Register = () => {
           }
         );
         console.log(response.data);
-        console.log(response.hashed_password);
-        console.log(JSON.stringify(response));
-        setSuccess(true)
+        navigate('/')
     }catch(err) {
       if(!err?.response) {
         setErrMsg('No Server Response')
@@ -124,18 +93,7 @@ const Register = () => {
   }
 
   return (
-    <>
-
-    {success ? (
-      <section>
-        <h1>
-        Success
-      </h1> 
-      <Link to={'/'}>Login</Link>
-      </section>
-      
-    ) : (
-
+    
 
     <section className={styles.loginContainer}>
       <div className={styles.loginWrapper}>
@@ -250,77 +208,9 @@ const Register = () => {
               Must match the first password input field
             </p>
             <button disabled={!validName || !validPwd || !validMatch ? true : false} >Create</button>
-
-
-
-          {/* <TextField 
-          label='Email address'
-          size='small'
-          margin='normal'
-          onChange={(e)=> setEmail(e.target.value)}
-          />
-          
-          <FormControl  variant="outlined" size='small' margin='normal'>
-            <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
-            <OutlinedInput
-              id="outlined-adornment-password"
-              type={values.showPassword ? 'text' : 'password'}
-              value={values.password}
-              onChange={handleChange('password')}
-              endAdornment={
-                <InputAdornment position="end">
-                  <IconButton
-                    aria-label="toggle password visibility"
-                    onClick={handleClickShowPassword}
-                    onMouseDown={handleMouseDownPassword}
-                    edge="end"
-                  >
-                    {values.showPassword ? <VisibilityOff /> : <Visibility />}
-                  </IconButton>
-                </InputAdornment>
-              }
-              label="Password"
-            />
-          </FormControl>
-          <FormControl  variant="outlined" size='small' margin='normal'>
-            <InputLabel htmlFor="outlined-adornment-password">Confirm password</InputLabel>
-            <OutlinedInput
-              id="outlined-adornment-password"
-              type={values.showPassword ? 'text' : 'password'}
-              value={values.password}
-              onChange={handleChange('password')}
-              endAdornment={
-                <InputAdornment position="end">
-                  <IconButton
-                    aria-label="toggle password visibility"
-                    onClick={handleClickShowPassword}
-                    onMouseDown={handleMouseDownPassword}
-                    edge="end"
-                  >
-                    {values.showPassword ? <VisibilityOff /> : <Visibility />}
-                  </IconButton>
-                </InputAdornment>
-              }
-              label="Confirm password"
-            />
-          </FormControl>
-          <span className={styles.spanDescription}>Password should contain both letter and number, with minimum length of 8 characters</span>
-          <Button 
-            sx={{
-              marginTop: '40px',
-            }}
-            id='submitBtn'
-            type='submit'
-            variant='contained'
-          >Create</Button> */}
         </form>
-    
-      
-
       </div>
     </section>
-    )}
-    </>
   );
 };
 

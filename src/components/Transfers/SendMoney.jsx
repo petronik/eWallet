@@ -2,7 +2,6 @@ import React from 'react'
 import styles from './MiddleSection.module.scss'
 import { Button } from '@mui/material';
 import TextField from '@mui/material/TextField';
-// import Input from '@mui/material/Input';
 import InfoIcon from '@mui/icons-material/Info';
 import InputAdornment from '@mui/material/InputAdornment';
 const SendMoney = () => {

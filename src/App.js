@@ -9,7 +9,7 @@ import Archive from './components/Archive/Archive';
 import Transfers from './components/Transfers/Transfers';
 import Account from './components/Account/Account';
 import TopUpAccount from './components/Transfers/TopUpAccount'
-// import TopUpSuccess from './components/Transfers/TopUpSuccess'
+import TopUpSuccess from './components/Transfers/TopUpSuccess'
 import Withdraw from './components/Transfers/Withdraw';
 import SendMoney from './components/Transfers/SendMoney';
 
@@ -27,11 +27,10 @@ function App() {
         {/* <Route element={ <RequireAuth /> }> */}
           <Route path='overview' element={<Overview />}/>
           <Route path='transfers' element={<Transfers />}>
-            <Route path='topupcard' element={<TopUpAccount/>}/>
-            {/* <Route path='topusuccess' element={<TopUpSuccess/>}/> */}
+            <Route index exact element={<TopUpAccount/>}/>
+            <Route path='topupsuccess' element={<TopUpSuccess/>}/>
             <Route path='sendmoney' element={<SendMoney/>}/>
             <Route path='withdraw' element={<Withdraw/> }/>
-          <Route/>
           </Route>
           <Route path='archive' element={<Archive />}/>
           <Route path='account' element={<Account/>}/>

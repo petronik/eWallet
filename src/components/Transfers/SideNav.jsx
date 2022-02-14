@@ -8,7 +8,7 @@ const SideNav = () => {
   const menu = [
     {
       title: 'Top up card',
-      link: 'topupcard',
+      link: '',
     },
     {
       title: 'Send money',
@@ -44,13 +44,6 @@ const SideNav = () => {
           <li>
             <NavLink 
               to={'/archive'}
-              // style={({ isActive }) => ({
-              //   borderLeft: isActive ? '2px solid #1E4DFC' : '2px solid transparent',
-              //   paddingLeft: '4px',
-              //   paddingBottom: '4px',
-              //   borderBottom: 0,
-              //   color: isActive ? '#1E4DFC' : '#000'
-              // })}
             >
               Archive
             </NavLink>

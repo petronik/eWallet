@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 import styles from './MiddleSection.module.scss'
 import { Button } from '@mui/material';
 import TextField from '@mui/material/TextField';
@@ -6,7 +7,7 @@ import InfoIcon from '@mui/icons-material/Info';
 
 
 const TopUpAccount = () => {
-
+  const navigate = useNavigate();
   const [amount, setAmount] = useState('');
   const [success , setSuccess] = useState(false);
   const amountInput = document.querySelector('#amountInput');
@@ -16,6 +17,8 @@ const TopUpAccount = () => {
     setAmount(e.target[0].value)
     amountInput.value = '';
     console.log(amount);
+    setSuccess(true)
+    navigate('topupsuccess')
 
   }
   
