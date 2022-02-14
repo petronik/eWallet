@@ -1,16 +1,24 @@
 .sectionTopUpSuccess {
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  // flex-direction: column;
-  color: red;
   padding-top: 50px;
   height: 80vh;
-  background: linear-gradient();
+  .bgsuccess{
+    width: 100%;
+    height: 30%;
+    position: relative;
+    background: linear-gradient(to right, rgba(139, 117, 255, 1),rgba(106, 137, 255, 1));
+  }
   &__wrapper{
     display: flex;
     flex-direction: column;
-    max-width: 50%;
     justify-content: center;
+    padding-top: 50px;
     align-items: center;
+    background: linear-gradient();
+    p{
+      text-align: center
+    };
   }
 }
