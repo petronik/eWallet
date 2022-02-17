@@ -6,7 +6,8 @@ const initialState = {
   first_name: '',
   last_name: '',
   birth_date: '',
-  password: ''
+  password: '',
+  accessToken: '',
 }
 
 export const userSlice = createSlice({
@@ -31,9 +32,12 @@ export const userSlice = createSlice({
     password: (state, action) => {
       state.password = action.payload
     },
+    accessToken: (state, action) => {
+      state.password = action.payload
+    },
 
   },
 })
-// export const { setEmail, setUserName, setFirstName, setLastName, setBirthDate, password} = userSlice.actions;
+
 export default userSlice;
 

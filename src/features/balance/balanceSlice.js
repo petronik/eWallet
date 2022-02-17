@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
 // import axios from '../../api/axios'
 
 const initialState = {
@@ -27,7 +27,9 @@ export const balanceSlice = createSlice({
   reducers: {
     setBalance: (state, action) => {
       state.balance = action.payload
-    }
+    },
+    
+
   },
   // extraReducers: {
   //   [getBalance.fulfilled]: () => console.log('getBalance: fulfilled'),

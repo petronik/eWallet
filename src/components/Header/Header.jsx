@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react';
+import React, {useState, useContext, useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 import MobileNavbar from './MobileNavbar'
@@ -30,7 +30,16 @@ const Login = () => {
 const Header = () => {
   const isMobile = useMediaQuery({ maxWidth: 768});
   const { setAuth } = useContext(AuthContext);
-  const isLoggedIn = localStorage.getItem('token')
+  const accessToken = localStorage.getItem('token')
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  useEffect(() => {
+    setTimeout(() => {
+      accessToken !== null ? setIsLoggedIn(true) : setIsLoggedIn(false)
+
+    }, 0)
+    console.log(isLoggedIn)
+    console.log(accessToken)
+  }, [isLoggedIn, accessToken ])
 
   
 
@@ -48,7 +57,7 @@ const Header = () => {
         }
         setAuth({});
         localStorage.removeItem('token')
-       navigate('/');
+        navigate('/');
     }
   
     return (
