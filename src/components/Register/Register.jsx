@@ -5,15 +5,7 @@ import { Link, useNavigate} from 'react-router-dom';
 import axios from '../../api/axios';
 
 import styles from './Register.module.scss'
-// import TextField from '@mui/material/TextField';
-// import IconButton from '@mui/material/IconButton';
-// import { Button } from '@mui/material';
-// import OutlinedInput from '@mui/material/OutlinedInput';
-// import InputLabel from '@mui/material/InputLabel';
-// import InputAdornment from '@mui/material/InputAdornment';
-// import FormControl from '@mui/material/FormControl';
-// import Visibility from '@mui/icons-material/Visibility';
-// import VisibilityOff from '@mui/icons-material/VisibilityOff'
+
 
 
 

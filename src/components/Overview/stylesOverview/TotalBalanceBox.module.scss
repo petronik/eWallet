@@ -19,6 +19,8 @@
       font-weight: 100;
     }
     .itemAmount{
+      display: flex;
+      justify-content: space-evenly;
       font-size: calc(10px + 2vmax);
       margin-bottom: 26px;
       font-weight: 500;
@@ -28,9 +30,11 @@
         font-size: calc(10px + 2vmax);
         color: #fff;
         border: 0;
+        text-transform: uppercase;
         option{
           background: #000;
           font-size: 16px;
+          
         }
       }
 

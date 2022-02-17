@@ -1,6 +1,6 @@
 import React from 'react';
 import AddOn from './AddOn';
-import TotalBalanceBox from './TotalBalanceBox';
+import TotalBalanceBox from './TotalBalanceBox/TotalBalanceBox';
 import TransfersAndPayments from './TransfersAndPayments';
 import ChartBox from './ChartBox'
 import LatesTransactions from './LatesTransactions';

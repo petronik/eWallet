@@ -5,10 +5,13 @@ import MobileNavbar from './MobileNavbar'
 import Navbar from './Navbar'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import AuthContext from '../../context/AuthProvider';
+import axios from '../../api/axios';
 
 import styles from './Header.module.scss'
 import logoImage from '../../assets/img/logo.svg'
 import logIn from '../../assets/img/login.svg'
+
+const LOGOUT_URL = '/user/logout';
 
 const Login = () => {
   
@@ -26,17 +29,26 @@ const Login = () => {
 }
 const Header = () => {
   const isMobile = useMediaQuery({ maxWidth: 768});
-  const {auth, setAuth } = useContext(AuthContext);
+  const { setAuth } = useContext(AuthContext);
+  const isLoggedIn = localStorage.getItem('token')
 
   
 
   const UserAvatar = () => {
     const navigate = useNavigate();
     const [show, setShow] = useState(false)
-  
+    const head = {headers: {'Authorization' :'Bearer ' + localStorage.getItem('token')}};
+
     const logout = async () => {
-      setAuth({});
-      navigate('/');
+      try{
+        const response = await axios.post(LOGOUT_URL,{}, head)
+          console.log(response)
+        } catch(err) {
+          console.log(err)
+        }
+        setAuth({});
+        localStorage.removeItem('token')
+       navigate('/');
     }
   
     return (
@@ -67,17 +79,17 @@ const Header = () => {
   return (
     <header className={styles.header}>
       
-      {auth?.username && isMobile && <MobileNavbar/>}
+      {isLoggedIn && isMobile && <MobileNavbar/>}
 
       <div className={styles.logo}>
         <img src={logoImage} alt="Bank Logo" />
         <p>Bank for people</p>
         
       </div>
-      { auth?.username && !isMobile  && <Navbar/>}
+      { isLoggedIn && !isMobile  && <Navbar/>}
       
-      { !auth?.username && <Login/>}
-      { auth?.username && <UserAvatar/>}
+      { !isLoggedIn && <Login/>}
+      { isLoggedIn && <UserAvatar/>}
 
     </header>
   );

@@ -8,7 +8,7 @@ const SideNav = () => {
   const menu = [
     {
       title: 'Top up card',
-      link: '',
+      link: 'topup',
     },
     {
       title: 'Send money',
