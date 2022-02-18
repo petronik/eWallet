@@ -3,7 +3,6 @@ import {Outlet} from 'react-router-dom';
 import { Button } from '@mui/material';
 import styles from './Transfers.module.scss'
 import SideNav from './SideNav';
-// import TopUpSuccess from './TopUpSuccess'
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const theme = createTheme({

@@ -13,15 +13,15 @@ const MobileNavbar = (props) => {
           <div className={styles.menuWrapper}>
             <h3>Menu</h3>
             <ul className={styles.navMenu}>
-              <li onClick={()=> navigate('/overview')} > Overview</li>
-              <li onClick={()=> navigate('/transfers')}>Transfers
+              <li onClick={()=> navigate('overview')} > Overview</li>
+              <li onClick={()=> navigate('transfers')}>Transfers
                 <ul className={styles.menu_transfers}>
-                  <li>Top up</li>
-                  <li>Send money</li>
-                  <li>Withdraw</li>
+                  <li onClick={()=> navigate('/topup')} >Top up</li>
+                  <li onClick={()=> navigate('sendmoney')} >Send money</li>
+                  <li onClick={()=> navigate('withdraw')} >Withdraw</li>
                 </ul>
               </li>
-              <li onClick={()=> navigate('/archive')}>Archive</li>
+              <li onClick={()=> navigate('archive')}>Archive</li>
             </ul>
           </div>
           )}

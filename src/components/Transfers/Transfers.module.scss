@@ -39,3 +39,14 @@ $borderGrey: #1C3454;
   }
 }
 
+@media screen and (max-width: 768px) {
+  
+  .sectionTransfer{
+    display: flex;
+    flex-direction: column;
+
+    .right{
+      display: none;
+    }
+  }
+}

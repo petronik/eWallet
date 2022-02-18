@@ -1,0 +1,24 @@
+.sidenav{
+  background: #FFFFFF;
+  margin: 1px;
+  height: 100%;
+  border-radius: 6px;
+  
+  ul{
+    font-weight: 600;
+    padding: 10px 10px 0 10px;
+    margin: 0;
+    list-style-type: none;
+    font-family: 'Inter', sans-serif;
+    li{
+      font-weight: 400;
+      padding-left: 5px;
+      line-height: 2em;
+      font-size: 1em;
+
+      a {
+        text-decoration: none;
+      }
+    }
+  }
+}

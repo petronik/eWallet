@@ -1,4 +1,5 @@
-import React, { useState} from 'react'
+import React, { useState } from 'react'
+import { useNavigate, Outlet } from 'react-router-dom'
 import styles from './MiddleSection.module.scss'
 import { Button } from '@mui/material';
 import TextField from '@mui/material/TextField';
@@ -8,7 +9,7 @@ import InfoIcon from '@mui/icons-material/Info';
 
 
 const SendMoney = () => {
-  
+  const navigate = useNavigate();
 
   const [values, setValues] = useState({
     recipient: '',
@@ -20,9 +21,10 @@ const SendMoney = () => {
     setValues({ ...values, [prop]: event.target.value});
   };
 
-  const handleContinue = (e) => {
-    e.preventDefault();
-    console.log(e)
+  const handleContinue = () => {
+    // e.preventDefault();
+    navigate('confirmtransaction')
+    console.log()
     console.log(values)
   }
   const handleCancel = () => {
@@ -75,7 +77,6 @@ const SendMoney = () => {
      type='submit'
      variant='contained'
      onClick={handleContinue}
-
    >
      Continue
    </Button>
@@ -90,6 +91,7 @@ const SendMoney = () => {
    </Button>
      
    </form>
+   <Outlet/>
  </div>
   )
 }

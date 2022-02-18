@@ -73,7 +73,7 @@ const Header = () => {
           </div>
           {
             show &&  <ul >
-              <li  onClick={() => navigate('/account')}>Account</li>
+              <li  onClick={() => navigate('account')}>Account</li>
               <li>Settings</li>
               <li>Notifications</li>
               <li onClick={logout} >Log out</li>

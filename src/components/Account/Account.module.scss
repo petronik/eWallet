@@ -1,8 +1,19 @@
 .containerAccount{
   display: flex;
-  justify-content: center;
-  align-items: center;
   height: 90vh;
-  font-size: 36px;
-  font-weight: bold;
+  margin: 1em auto 0;
+  
+  .wrapper {
+    border-radius: 6px;
+    background: linear-gradient(180deg, rgba(25, 59, 103, 0.1) 0%, rgba(25, 59, 103, 0) 100%), #FFFFFF;
+    &:last-child{
+      flex-basis: 82%;
+      margin-left: 1em;
+      }
+  }
+}
+@media screen and (max-width: 768px) {
+  .containerAccount{
+    flex-direction: column;
+  }
 }

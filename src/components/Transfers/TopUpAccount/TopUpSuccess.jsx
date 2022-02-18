@@ -28,7 +28,7 @@ const TopUpSuccess = () => {
       <p>Your account has been successfully <br/> topped up for $3 400.00</p>
       <Button
       variant='contained'
-      onClick ={ ()=> navigate('/transfers')}
+      onClick ={ ()=> navigate(-1)}
       >
         Top up again
       </Button>

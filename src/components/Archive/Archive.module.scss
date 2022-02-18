@@ -1,0 +1,17 @@
+.wrapperArcive{
+
+  max-width: 1440px;
+  margin: 0 auto;
+  font-family: 'Inter', sans-serif;
+  .headerArchive{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    font-family: 'Inter', sans-serif;
+    span{
+      font-size: 18px;
+      
+    }
+  }
+}
