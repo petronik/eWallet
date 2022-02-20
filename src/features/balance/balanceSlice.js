@@ -13,9 +13,9 @@ const initialState = {
 //     const res = await axios.get(
 //         BALANCE_URL,
 //         {params: {currency: `${currency}`},
-//         headers: {
-//           'Authorization' :'Bearer ' + auth.accessToken
-//         }}
+  //         headers: 
+  //           'Authorization' :'Bearer ' + auth.accessToken
+  //         }
 //       );
 //       console.log(res.data.balance)
 //     dispatch(setBalance(res.data.balance))
@@ -37,5 +37,5 @@ export const balanceSlice = createSlice({
   //   [getBalance.rejected]: () => console.log('getBalance: rejected'),
   // }
 })
-// export const { setBalance } = balanceSlice.actions;
+
 export default balanceSlice;

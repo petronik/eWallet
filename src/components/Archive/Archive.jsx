@@ -1,67 +1,112 @@
-import React from 'react';
-
-
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux'
+import axios from '../../api/axios'
+import allTransactionsSlice from '../../features/allTransactions/allTransactions';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import CategoryIcon from '@mui/icons-material/Category';
 import DateRangeIcon from '@mui/icons-material/DateRange';
 import SearchIcon from '@mui/icons-material/Search';
-import Stack from '@mui/material/Stack';
 import ArrowBackTwoToneIcon from '@mui/icons-material/ArrowBackTwoTone';
-import TextField from '@mui/material/TextField';
-import InputAdornment from '@mui/material/InputAdornment';
 import BarChartIcon from '@mui/icons-material/BarChart';
-import Button  from '@mui/material/Button';
-import { styled } from '@mui/material/styles';
-import styles from './Archive.module.scss'
-const Archive = () => {
+import Transaction from './Transaction';
 
-    const NavButton = styled(Button)({
-      background: '#eee',
-      fontSize:'10px',
-      color: '#727e8c',
-      size: 'small',
-    })
+import SortByCategory from './SortByCategory/SortByCategory'
+import styles from './Archive.module.scss'
+
+const ALL_TRANSACTIONS_URL = '/transactions';
+
+
+const Archive = () => {
+  const dispatch = useDispatch();
+  const startDate = '2022-01-01';
+  const endDate = '2022-02-20';
+  const transactions = Array.from(useSelector((state) => state.allTransactions.allTransactions))
+
+  const fetchAlltTransactions = async () => {
+    const res = await axios.get(
+      ALL_TRANSACTIONS_URL,
+      {
+        params: {start_date: `${startDate}`, end_date: `${endDate}`
+        },
+        headers: {
+          'Authorization' :'Bearer ' + localStorage.getItem('token')
+        }
+      }
+    );
+    dispatch(allTransactionsSlice.actions.setAllTransactions(res.data.transactions))
+    // console.log(...res.data.transactions)
+    return res
+  }
+  useEffect(() => {
+    fetchAlltTransactions()
+    console.log(transactions)
+  }, []);
+
+
+  const navigate = useNavigate();
+  const [ showItem, setShowItem] = useState(false);
 
   return (
     <div className={styles.wrapperArcive} >
       <div className={styles.headerArchive} >
-        <span> 
-          <span>
+        <div> 
+          <div  >
             <ArrowBackTwoToneIcon />
-          </span> 
+          </div> 
           Archive transactions
-          </span>
+        </div>
         <nav>
-          <Stack direction="row" spacing={2} >
-          <TextField
-            label="Search"
-            type="search"
-            variant="filled"
-            size='small'
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <SearchIcon />
-                </InputAdornment>
-              ),
-            }}
+          <div className={styles.searchBox}>
+          <span>
+            <SearchIcon sx={{
+              color: '#1B2B41',
+              width: '20px',
+              marginLeft: '5px',
+              marginTop: '5px',
+            }} />
+          </span>
+          <input 
+            type="search" 
+            name="archiveSearch" 
+            placeholder='Search'
           />
-          <NavButton >
-            <FilterListIcon />
-          </NavButton>
-          <NavButton >
-            <CategoryIcon />
-          </NavButton>
-          <NavButton  >
-            <DateRangeIcon />
-          </NavButton>
-          <NavButton >
-            <BarChartIcon />
-          </NavButton>
-          </Stack>
+          </div>
+          <div className={styles.buttonBox}  >
+            <span>Filter by</span>
+            <div>
+              <button  >
+                <FilterListIcon/>
+              </button>
+            </div>
+            <div >
+              <button onClick={()=> setShowItem(!showItem)} >
+                <CategoryIcon/>
+              </button>
+              { showItem && <SortByCategory/>}
+            </div>
+            <div>
+              <button>
+                <DateRangeIcon/>
+              </button>
+            </div>
+            <div>
+              <button>
+                <BarChartIcon/>
+              </button>
+            </div>
+          </div>
+
+
         </nav>
       </div>
-      <div className={styles.archiveList} ></div>
+      <div className={styles.archiveList} >
+        {transactions?.map((item) => (
+            <Transaction  transaction={item} />
+          ))
+        }
+      </div>
+      
     </div>
   );
 };

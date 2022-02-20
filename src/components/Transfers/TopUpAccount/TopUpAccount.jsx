@@ -1,22 +1,51 @@
 import React, { useState } from 'react'
-import { useNavigate, Outline } from 'react-router-dom';
+import { useNavigate, Outlet } from 'react-router-dom';
 import styles from '../MiddleSection.module.scss'
 import { Button } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import InfoIcon from '@mui/icons-material/Info';
+import { useDispatch } from 'react-redux'
+import axios from '../../../api/axios';
+import balanceSlice from '../../../features/balance/balanceSlice';
+
+const FILL_URL = '/transactions/fill'
 
 
 const TopUpAccount = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [amount, setAmount] = useState('');
+  const [fillAmount, setFillAmount] = useState('');
   // const [ setSuccess] = useState(false);
   const amountInput = document.querySelector('#amountInput');
+  const fillAccount = async () => {
+    try{
+      const res = await axios.post(FILL_URL,
+        {
+          value: fillAmount,
+        },
+        {
+          headers: {
+            'Authorization' :'Bearer ' + localStorage.getItem('token')
+          }
+        }
+        )
+        console.log(res.data)
+        dispatch(balanceSlice.setBalance(res.data.balance))
+      return res
+    }catch(err) {
+      console.log(err)
+    }
+  }
+
+
+
 
   const handleSubmit =  (e) => {
     e.preventDefault();
-    setAmount(e.target[0].value)
+    setFillAmount(e.target[0].value)
     amountInput.value = '';
-    console.log(amount);
+    console.log(fillAmount);
+    fillAccount()
     // setSuccess(true)
     navigate('topupsuccess' )
 
@@ -24,7 +53,7 @@ const TopUpAccount = () => {
   
 
   const handleCancel = () => {
-    setAmount('')
+    setFillAmount('')
     amountInput.value = '';
   }
 
@@ -38,7 +67,7 @@ const TopUpAccount = () => {
         label="Enter the amount" 
         name='amount'
         variant="outlined" 
-        onChange={(e) => setAmount(e.target.value)}
+        onChange={(e) => setFillAmount(e.target.value)}
 
         />
         <Button 
@@ -47,7 +76,8 @@ const TopUpAccount = () => {
           }}
           type='submit'
           variant='contained'
-          // disabled={amountInput.value === '' ? true : false}
+          
+          // disabled={amountInput.value == null ? true : false}
         >
           Top up
         </Button>
@@ -62,7 +92,7 @@ const TopUpAccount = () => {
         </Button>
         
       </form>
-      {/* <Outlet/> */}
+      <Outlet/>
     </div>
   )
 }

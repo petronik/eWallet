@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import   balanceSlice  from '../../../features/balance/balanceSlice';
 import axios from '../../../api/axios';
@@ -29,9 +29,26 @@ const currencies = [
 
 
 const SelectCurrency = () => {
+
   const dispatch = useDispatch();
   const balance = useSelector((state) => state.balance.balance)
   const [currency, setCurrency] = useState(currencies[0].value);
+
+  const fetchData = async() => {
+    const res = await axios.get(
+      BALANCE_URL,
+        {params: {currency: `${currency}`},
+        headers: {
+          'Authorization' :'Bearer ' + localStorage.getItem('token')
+        }}
+    );
+    dispatch(balanceSlice.actions.setBalance(res.data.balance))
+  }
+
+  useEffect( () => {
+    fetchData()
+
+  }, []);
 
   const getBalance = async () => {
     try{
@@ -42,7 +59,7 @@ const SelectCurrency = () => {
           'Authorization' :'Bearer ' + localStorage.getItem('token')
         }}
       );
-      console.log(res.data.balance)
+      console.log(`Curency:  ${res.config.params.currency}, Balance: ${res.data.balance}`)
       dispatch(balanceSlice.actions.setBalance(res.data.balance))
       return res
     } catch (err) {

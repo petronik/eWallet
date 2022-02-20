@@ -2,16 +2,99 @@
 
   max-width: 1440px;
   margin: 0 auto;
+  padding: 0 10px;
   font-family: 'Inter', sans-serif;
+  
   .headerArchive{
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    // align-items: center;
     margin-top: 20px;
     font-family: 'Inter', sans-serif;
-    span{
-      font-size: 18px;
-      
+    >div{
+      display: flex;
+      align-items: center;
+      line-height: 22px;
+      font-size: 22px;
+      span {
+        margin-right: 10px;
+      }
+    }
+    nav{
+      display: flex;
+      .searchBox{
+        display: flex;
+        border: 1px solid #eee;
+        border-radius: 6px;
+        background: #f3f5f7;
+        >span{
+
+        }
+        >input{
+          width: 100%;
+          outline:none;
+          border: 0;
+          background: transparent;
+        }
+      }
+      .buttonBox{
+        display: flex;
+        
+        flex-direction: row;
+        >div{
+          position: relative;
+          >button:hover + .checkboxContainer{
+            display: block;
+
+          }
+        }
+        &>span{
+          display: none;
+        }
+        button{
+          margin-left: 10px;
+          border: 2px solid #f3f5f7;
+          border-radius: 4px;
+          cursor:pointer;
+        }
+      }
+  
+    }
+    
+    
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .headerArchive{
+    flex-direction: column;
+    align-items: start;
+    // justify-content: start;
+    >nav{
+      flex-direction: column;
+      margin-top: 15px;
+      width: 100%;
+      .searchBox{
+        display: flex;
+        width: 100%;
+        border: 1px solid #eee;
+        >input{
+          width: 100%;
+          outline:none;
+          border: 0
+        }
+      }
+      .buttonBox{
+        display: flex;
+        margin-top: 15px;
+        text-align: end;
+        &>span{
+          display: flex;
+          align-items: center;
+          flex-grow: 1;
+        }
+      }
+  
     }
   }
 }

@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import RequireAuth from './components/RequireAuth'
 import {Routes, Route, Navigate} from 'react-router-dom'
 import Layout from './components/Layout'
@@ -11,15 +11,13 @@ import Account from './components/Account/Account';
 import TopUpAccount from './components/Transfers/TopUpAccount/TopUpAccount'
 import TopUpSuccess from './components/Transfers/TopUpAccount/TopUpSuccess'
 import Withdraw from './components/Transfers/Withdraw';
-import SendMoney from './components/Transfers/SendMoney';
-import ConfirmTransaction from './components/Transfers/ConfirmTransaction';
+import SendMoney from './components/Transfers/SendMoney/SendMoney';
+import ConfirmTransaction from './components/Transfers/SendMoney/ConfirmTransaction';
 import Security from './components/Account/Security/Security';
 
 function App() {
 
-useEffect(() => {
-  
-})
+
 
   return (
 
@@ -33,14 +31,13 @@ useEffect(() => {
         <Route element={ <RequireAuth /> }>
           <Route path='overview' element={<Overview />}/>
           <Route path='transfers' element={<Transfers />}>
-            {/* <Route index element={<Navigate to="topup" />}/> */}
-            <Route path='topup' element={<TopUpAccount/>}>
-              <Route index path='topupsuccess' element={<TopUpSuccess/>}/>
-              
+            <Route index element={<Navigate to="topup" />}/>
+            <Route  path='topup' element={<TopUpAccount/>}>
+              <Route path='topupsuccess' element={<TopUpSuccess/>}/>
             </Route>
-            <Route path='sendmoney' element={<SendMoney/>}/>
-            <Route path='confirmtransaction' element={<ConfirmTransaction/>}/>
-            
+            <Route path='sendmoney' element={<SendMoney/>}>
+              <Route path='confirmtransaction' element={<ConfirmTransaction/>}/>
+            </Route>
             <Route path='withdraw' element={<Withdraw/> }/>
           </Route>
           <Route path='archive' element={<Archive />}/>

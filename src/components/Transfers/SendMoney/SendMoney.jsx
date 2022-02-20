@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import { useNavigate, Outlet } from 'react-router-dom'
-import styles from './MiddleSection.module.scss'
+import styles from '../MiddleSection.module.scss'
 import { Button } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import InfoIcon from '@mui/icons-material/Info';
 
 
-
+const SEND_URL = '/transactions/pay'
 
 const SendMoney = () => {
   const navigate = useNavigate();
@@ -21,8 +21,8 @@ const SendMoney = () => {
     setValues({ ...values, [prop]: event.target.value});
   };
 
-  const handleContinue = () => {
-    // e.preventDefault();
+  const handleContinue = (e) => {
+    e.preventDefault();
     navigate('confirmtransaction')
     console.log()
     console.log(values)

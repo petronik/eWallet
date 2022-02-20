@@ -29,17 +29,18 @@ const Login = () => {
 }
 const Header = () => {
   const isMobile = useMediaQuery({ maxWidth: 768});
-  const { setAuth } = useContext(AuthContext);
-  const accessToken = localStorage.getItem('token')
+  const { auth, setAuth } = useContext(AuthContext);
+  // const accessToken = localStorage.getItem('token')
   const [isLoggedIn, setIsLoggedIn] = useState(false)
-  useEffect(() => {
-    setTimeout(() => {
-      accessToken !== null ? setIsLoggedIn(true) : setIsLoggedIn(false)
 
-    }, 0)
-    console.log(isLoggedIn)
-    console.log(accessToken)
-  }, [isLoggedIn, accessToken ])
+  useEffect(() => {
+    
+      localStorage.getItem('username') ? setIsLoggedIn(true) : setIsLoggedIn(false)
+
+    
+    console.log('Login: ' + isLoggedIn)
+    console.log(auth.username)
+  }, [ auth, isLoggedIn])
 
   
 
@@ -56,7 +57,8 @@ const Header = () => {
           console.log(err)
         }
         setAuth({});
-        localStorage.removeItem('token')
+        localStorage.removeItem('token');
+        localStorage.removeItem('username');
         navigate('/');
     }
   
@@ -76,7 +78,7 @@ const Header = () => {
               <li  onClick={() => navigate('account')}>Account</li>
               <li>Settings</li>
               <li>Notifications</li>
-              <li onClick={logout} >Log out</li>
+              <li onClick={ logout }>Log out</li>
             </ul>
           } 
           

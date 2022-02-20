@@ -6,7 +6,6 @@ const initialState = {
   first_name: '',
   last_name: '',
   birth_date: '',
-  password: '',
   accessToken: '',
 }
 
@@ -14,6 +13,9 @@ export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
+    setUser: (state, action) => {
+      state.user = action.payload
+    },
     setEmail: (state, action) => {
       state.email = action.payload
     },
@@ -28,9 +30,6 @@ export const userSlice = createSlice({
     },
     setBirthDate: (state, action) => {
       state.birth_date = action.payload
-    },
-    password: (state, action) => {
-      state.password = action.payload
     },
     accessToken: (state, action) => {
       state.password = action.payload

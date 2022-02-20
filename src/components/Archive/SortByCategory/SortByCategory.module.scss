@@ -1,0 +1,38 @@
+.checkboxContainer{
+    position: absolute;
+    right: 0;
+    top:22px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 8px 1px rgba(34, 60, 80, 0.2);
+    margin-top: 15px;
+    padding: 10px;
+    width: 300px;
+    .header{
+        display: none;
+        justify-content: space-between;
+        align-items: center;
+        line-height: 13px;
+        font-size: 22px;
+    }
+    .iconWrapper{
+        display: flex;
+        align-items: center;
+        >img{
+            width: 23px;
+            margin-right: 10px;
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .checkboxContainer{
+        width: 90%;
+        .header{
+            display: flex;
+        }
+    }
+    
+}
+.hidden{
+    display: none;
+}
