@@ -3,18 +3,13 @@ import { faCheck, faInfoCircle, faTimes, faEye, faEyeSlash } from '@fortawesome/
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link, useNavigate} from 'react-router-dom';
 import axios from '../../api/axios';
-
 import styles from './Register.module.scss'
-
-
-
 
 const USER_REGEX = /^[a-zA-z][a-zA-Z0-9-_@.]{3,40}$/;
 const PWD_REGEX = /^(?=.*[a-z]).{2,24}/;
 const REGISTER_URL = '/user/signup'
 
 const Register = () => {
-
 
   const userRef = useRef();
   const errRef = useRef();
@@ -72,7 +67,7 @@ const Register = () => {
           {username: user, password: pwd, email : user, first_name, last_name, birth_date},
           {
             headers: { 'Content-Type': 'application/json',
-                       'Access-Control-Allow-Origin': '*'}
+                      'Access-Control-Allow-Origin': '*'}
           }
         );
         console.log(response.data);
@@ -80,13 +75,16 @@ const Register = () => {
     }catch(err) {
       if(!err?.response) {
         setErrMsg('No Server Response')
-      } else {errMsg(err)}
+      } else if (err.response?.status === 400) {
+          setErrMsg('Email already registered');
+      } else if (err.response?.status === 401) {
+          setErrMsg('Unauthorized');
+      } else {
+          setErrMsg('Registering Failed')
+      } 
     }
   }
-
   return (
-    
-
     <section className={styles.loginContainer}>
       <div className={styles.loginWrapper}>
       <h1>Create an account</h1>
@@ -96,9 +94,7 @@ const Register = () => {
         </span>
       </p>
       <p ref={errRef}  className={ errMsg ? styles.errmsg : styles.offscreen}>{errMsg}</p>
-
         <form onSubmit={handleSubmit} >
-
             <label htmlFor="email">
               Email address
               <span className={validName ? styles.valid : styles.hide}>
@@ -120,7 +116,6 @@ const Register = () => {
               onBlur={() => setUserFocus(false)}
             
             />
-
             
             <p className={userFocus && user && !validName ? styles.instructions : styles.offscreen}>
               <FontAwesomeIcon icon={faInfoCircle} />
@@ -128,8 +123,6 @@ const Register = () => {
               Must begin with a letter. <br/>
               Letters, numbers, underscores, hyphens allowed.
             </p>
-
-
             <label htmlFor="password">
               Password
               <span className={validPwd ? styles.valid : styles.hide}>
@@ -151,7 +144,6 @@ const Register = () => {
             <div 
               className={styles.alingend} 
               onClick={togglePassword}>
-
             <span className={showPassword ? styles.hide : styles.show}>
               <FontAwesomeIcon icon={faEye} />
             </span>
@@ -165,7 +157,6 @@ const Register = () => {
               Must include uppercase and lowercase letters, a number and a special character.<br />
               Allowed special characters: ! @ # $ %
             </p>
-
             <label htmlFor="confirm_pwd">
               Confirm Password
               <span className={validMatch && matchPwd ? styles.valid : styles.hide}>
@@ -187,7 +178,6 @@ const Register = () => {
             <div 
               className={styles.alingend} 
               onClick={togglePassword}>
-
             <span className={showPassword ? styles.hide : styles.show}>
               <FontAwesomeIcon icon={faEye} />
             </span>

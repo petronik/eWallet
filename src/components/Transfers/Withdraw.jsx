@@ -3,19 +3,15 @@ import { useDispatch } from 'react-redux'
 import axios from '../../api/axios';
 import { Button } from '@mui/material';
 import balanceSlice from '../../features/balance/balanceSlice';
-
 import TextField from '@mui/material/TextField';
 import InfoIcon from '@mui/icons-material/Info';
 import styles from './MiddleSection.module.scss'
-
-
 const WITHDRAW_URL = '/transactions/withdraw';
 
 const Withdraw = () => {
   const dispatch = useDispatch();
   const [withdrawAmount, setWithdrawAmount] = useState();
   const withdrawInput = document.querySelector('#withdrawInput');
-
   const withdrawMoney = async () => {
     try{
       const res = await axios.post(WITHDRAW_URL,
@@ -35,19 +31,16 @@ const Withdraw = () => {
       console.log(err)
     }
   }
-
   const handleSubmit = (e) => {
     e.preventDefault();
     withdrawMoney();
     withdrawInput.value = '';
     console.log(e)
   }
-
   const handleCancel = () => {
     setWithdrawAmount('')
     withdrawInput.value = '';
   }
-
   return (
     <div className={styles.transferMain}>
       <div>Withdraw <span className={styles.topupInfo}><InfoIcon/></span> </div> 

@@ -7,9 +7,6 @@ import LatesTransactions from './LatesTransactions';
 
 import styles from './stylesOverview/Overview.module.scss'
 
-
-
-
 const Overview = () => {
   return (
     <div className={styles.container}>

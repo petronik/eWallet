@@ -24,13 +24,12 @@ const Login = () => {
         </span>
           <img src={logIn} alt="Log in" />
           
-      </div>
+    </div>
   )
 }
 const Header = () => {
   const isMobile = useMediaQuery({ maxWidth: 768});
   const { auth, setAuth } = useContext(AuthContext);
-  // const accessToken = localStorage.getItem('token')
   const [isLoggedIn, setIsLoggedIn] = useState(false)
 
   useEffect(() => {
@@ -41,8 +40,6 @@ const Header = () => {
     console.log('Login: ' + isLoggedIn)
     console.log(auth.username)
   }, [ auth, isLoggedIn])
-
-  
 
   const UserAvatar = () => {
     const navigate = useNavigate();
@@ -61,7 +58,6 @@ const Header = () => {
         localStorage.removeItem('username');
         navigate('/');
     }
-  
     return (
       <div className={styles.userAvatar}
       onClick={()=>setShow(!show)}
@@ -86,22 +82,16 @@ const Header = () => {
         </div>
     )
   }
-
   return (
     <header className={styles.header}>
-      
       {isLoggedIn && isMobile && <MobileNavbar/>}
-
       <div className={styles.logo}>
         <img src={logoImage} alt="Bank Logo" />
         <p>Bank for people</p>
-        
       </div>
       { isLoggedIn && !isMobile  && <Navbar/>}
-      
       { !isLoggedIn && <Login/>}
       { isLoggedIn && <UserAvatar/>}
-
     </header>
   );
 };

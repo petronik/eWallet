@@ -13,9 +13,7 @@ const theme = createTheme({
     },
   },
 });
-
 const Transfers = () => {
-
 
   return (
     <section className={styles.sectionTransfer}>
@@ -35,7 +33,6 @@ const Transfers = () => {
             Read nore
           </Button>
         </ThemeProvider>
-
       </div>
     </section>
   );

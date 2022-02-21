@@ -11,7 +11,6 @@ import other from '../../../assets/img/other.svg'
 
 import styles from './SortByCategory.module.scss'
 
-
 const SortByCategory = () => {
     const [checkBoxState, setCheckBoxState] = useState({
         transactions: false,
@@ -31,9 +30,6 @@ const SortByCategory = () => {
         console.log(checkBoxState)
         
     }
-
-
-
 return (
     <div className={styles.checkboxContainer} >
         <div className={styles.header}>
@@ -106,7 +102,7 @@ return (
         </div>
         
     </div>
-  )
+    )
 }
 
 export default SortByCategory

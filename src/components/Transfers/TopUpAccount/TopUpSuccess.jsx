@@ -24,7 +24,6 @@ const TopUpSuccess = () => {
         />
       </div>
       <div className={styles.sectionTopUpSuccess__wrapper}>
-
       <p>Your account has been successfully <br/> topped up for $3 400.00</p>
       <Button
       variant='contained'
@@ -32,12 +31,11 @@ const TopUpSuccess = () => {
       >
         Top up again
       </Button>
-      
       <Button
         sx={{
           marginTop: '20px',
         }}
-        onClick ={ ()=> navigate('/overview')}
+        onClick ={() => navigate('/transfers/topup')}
       >
         Back to the main page
       </Button>

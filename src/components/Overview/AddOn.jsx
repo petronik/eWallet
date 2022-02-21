@@ -7,8 +7,6 @@ const ReadMoreButton = styled(Button)({
   padding: '10px 34px', 
   marginBottom: '124px',
 })
-
-
 const Add = () => {
   return (
     <section className={styles.addon}>

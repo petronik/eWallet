@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux'
 import axios from '../../api/axios'
 import TextField from '@mui/material/TextField';
 import IconButton from '@mui/material/IconButton';
@@ -12,26 +13,23 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff'
 import useAuth from '../../hooks/useAuth';
 import styles from './Login.module.scss'
+import userSlice from '../../features/user/userSlice';
 
 const LOGIN_URL = '/user/login'
 
-
-
 const Login = () => {
+  const dispatch = useDispatch();
+
   const {setAuth} = useAuth();
 
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || '/overview'
-
-
-
   const[username, setUserName] = useState('');
   const [password, setPassword] = useState('');
   const [errMsg, setErrMsg] = useState('');
-  
   const [showPassword, setShowPassword] = useState(false);
-
+  const user = useSelector((state) => state.user.user)
 
   useEffect(() => {
     setErrMsg('');
@@ -40,17 +38,12 @@ const Login = () => {
   const handleChange = () => (e) => {
     setPassword( e.target.value);
   };
-
   const handleClickShowPassword = () => {
     setShowPassword( !showPassword);
   };
-
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
-  
-
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     try{
@@ -63,7 +56,7 @@ const Login = () => {
         }
       );
       
-      // console.log(response.data);
+      dispatch(userSlice.actions.setUser(response.data) )
       const accessToken = response?.data?.access_token;
       localStorage.setItem('token', response?.data?.access_token)
       localStorage.setItem('username', response?.data?.username)
@@ -82,12 +75,8 @@ const Login = () => {
           setErrMsg('Login Failed')
       }
     }
-
-    
   }
-
   return (
-   
       <section className={styles.loginContainer}>
         <p  className={errMsg ? styles.errmsg : styles.offscreen}>{errMsg}</p>
         <div className={styles.loginWrapper}>
@@ -96,7 +85,6 @@ const Login = () => {
         <Link to='/register' >Create an account</Link>
         </span>
         </p>
-        
         <form noValidate autoComplete='off' onSubmit={handleSubmit}>
           <TextField 
           label='Email address'
@@ -104,7 +92,6 @@ const Login = () => {
           margin='normal'
           onChange={(e)=> setUserName(e.target.value)}
           />
-          
           <FormControl  variant="outlined" size='small' margin='normal'>
             <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
             <OutlinedInput
@@ -136,7 +123,6 @@ const Login = () => {
         </form>
         </div>
       </section>
-     
   );
 };
 

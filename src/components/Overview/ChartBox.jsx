@@ -1,39 +1,70 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux'
 import { Doughnut } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import summarySlice from '../../features/infirmationSummary/summarySlice';
+import axios from '../../api/axios';
 import styles from './stylesOverview/ChartBox.module.scss'
 import filter from '../../assets/img/filter.svg'
 import datePicker from '../../assets/img/calendar.svg'
-import SendIcon from '../../assets/img/sendMoney2.png' 
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-const data = {
-  labels: ['Black', 'Purple'],
-  datasets: [
-    {
-      data: [30, 17],
-      
-      backgroundColor: [
-        'rgba(0, 0, 0, 0.8)',
-        'rgba(112,133,255, 1)',
-      ],
-      
-      borderWidth: 0,
-
-    }
-  ]
-};
+const SUMMARY_URL = '/information/summary';
 
 const options = {
   plugins: {
     legend: {
-      display: false,
+      display: true,
     }
   }
 }
-
 const ChartBox = () => {
+  const dispatch = useDispatch();
+  const startDate = '2022-01-01';
+  const endDate = '2022-02-21';
+  const currency = 'usd'
+  const summary = useSelector((state) => 
+    state.summary.summary
+  )
+  const data = {
+    labels: ['Withdraw', 'Transfers', 'Fills'],
+    datasets: [
+      {
+        data: [
+                // `${summary.payment_withdraw}`,
+                // `${summary.payment_made}`,
+                // `${summary.payment_fill}`,
+                23,23,45,
+              ],
+        backgroundColor: [
+          'rgba(0, 0, 0, 0.8)',
+          'rgba(112,133,255, 1)',
+          'rgba(0, 255, 55,1)'
+        ],
+        borderWidth: 2,
+      }
+    ]
+  };
+
+const getChartData = async () => {
+  const res = await axios.get(
+    SUMMARY_URL,
+    {
+      params: {start_date: `${startDate}`, end_date: `${endDate}`, currency: `${currency}`
+      },
+      headers: {
+        'Authorization' :'Bearer ' + localStorage.getItem('token')
+      }
+    }
+  );
+  console.log(summary)
+  dispatch(summarySlice.actions.setSummary(res.data))
+}
+useEffect(() => {
+  getChartData()
+}, [])
+
   return (
     <section className={styles.chartContainerWrap}>
       <div className={styles.chartContainer}>
@@ -47,14 +78,10 @@ const ChartBox = () => {
         <div className={styles.chartWrapper}>
           <div className={styles.chartDoughnut}>
             <Doughnut data={data} options={options} />
-            <span className={styles.chartSpan}>
-            <img src={SendIcon} alt="Send Icon" />
-            <br />
-            </span>
           </div>
           <div className={styles.chartData}>
             <div className={styles.chartDateRange}>JANUARY 2021 - OCTOBER 2021</div>
-            <p>-$567.44</p>
+            <p>445</p>
             <span>43%</span>
           </div>
         </div>

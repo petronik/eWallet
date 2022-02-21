@@ -24,7 +24,10 @@ function App() {
     <Routes>
       <Route path='/' element={ <Layout/> } >
         {/* public routes */}
-        <Route index element={<Login/>}/>
+        <Route index element={<Navigate to="login" />}/>
+        <Route  path='login'>
+          <Route index element={<Login/>}/>
+        </Route>
         <Route path='register' element={<Register />}/>
 
         {/* protected routes */}
@@ -32,10 +35,12 @@ function App() {
           <Route path='overview' element={<Overview />}/>
           <Route path='transfers' element={<Transfers />}>
             <Route index element={<Navigate to="topup" />}/>
-            <Route  path='topup' element={<TopUpAccount/>}>
-              <Route path='topupsuccess' element={<TopUpSuccess/>}/>
+            <Route  path='topup'>
+              <Route index element={<TopUpAccount/>}/>
+              <Route  path='success' element={<TopUpSuccess/>}/>
             </Route>
-            <Route path='sendmoney' element={<SendMoney/>}>
+            <Route path='sendmoney'>
+              <Route index element={<SendMoney/>}/>
               <Route path='confirmtransaction' element={<ConfirmTransaction/>}/>
             </Route>
             <Route path='withdraw' element={<Withdraw/> }/>

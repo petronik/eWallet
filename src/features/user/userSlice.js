@@ -16,24 +16,24 @@ export const userSlice = createSlice({
     setUser: (state, action) => {
       state.user = action.payload
     },
-    setEmail: (state, action) => {
-      state.email = action.payload
-    },
-    setUserName: (state, action) => {
-      state.username = action.payload
-    },
-    setFirstName: (state, action) => {
-      state.first_name = action.payload
-    },
-    setLastName: (state, action) => {
-      state.last_name = action.payload
-    },
-    setBirthDate: (state, action) => {
-      state.birth_date = action.payload
-    },
-    accessToken: (state, action) => {
-      state.password = action.payload
-    },
+    // setEmail: (state, action) => {
+    //   state.email = action.payload
+    // },
+    // setUserName: (state, action) => {
+    //   state.username = action.payload
+    // },
+    // setFirstName: (state, action) => {
+    //   state.first_name = action.payload
+    // },
+    // setLastName: (state, action) => {
+    //   state.last_name = action.payload
+    // },
+    // setBirthDate: (state, action) => {
+    //   state.birth_date = action.payload
+    // },
+    // accessToken: (state, action) => {
+    //   state.password = action.payload
+    // },
 
   },
 })

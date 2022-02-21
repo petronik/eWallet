@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux'
 import axios from '../../api/axios'
 import allTransactionsSlice from '../../features/allTransactions/allTransactions';
@@ -21,7 +20,7 @@ const Archive = () => {
   const dispatch = useDispatch();
   const startDate = '2022-01-01';
   const endDate = '2022-02-20';
-  const transactions = Array.from(useSelector((state) => state.allTransactions.allTransactions))
+  const transactions = useSelector((state) => state.allTransactions.allTransactions)
 
   const fetchAlltTransactions = async () => {
     const res = await axios.get(
@@ -35,16 +34,13 @@ const Archive = () => {
       }
     );
     dispatch(allTransactionsSlice.actions.setAllTransactions(res.data.transactions))
-    // console.log(...res.data.transactions)
     return res
   }
   useEffect(() => {
     fetchAlltTransactions()
-    console.log(transactions)
   }, []);
 
 
-  const navigate = useNavigate();
   const [ showItem, setShowItem] = useState(false);
 
   return (
@@ -96,13 +92,11 @@ const Archive = () => {
               </button>
             </div>
           </div>
-
-
         </nav>
       </div>
       <div className={styles.archiveList} >
-        {transactions?.map((item) => (
-            <Transaction  transaction={item} />
+        {transactions?.map((transaction, index) => (
+            <Transaction key={index} transaction={transaction} />
           ))
         }
       </div>

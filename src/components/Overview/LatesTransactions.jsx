@@ -1,12 +1,9 @@
 import React from 'react';
-
 import SearchIcon from '@mui/icons-material/Search';
 import TopUpIcon from '../../assets/img/TopUpBlack.svg';
 import WithdrawIcon from '../../assets/img/WithdrawGreen.svg';
 import TransferIcon from '../../assets/img/Transfer.svg';
-
 import styles from './stylesOverview/LatesTransactions.module.scss'
-
 
 const TopUp = () => {
   return (
@@ -49,7 +46,6 @@ const Withdraw = () => {
 const LatesTransactions = () => {
   return (
     <div className={styles.containerWrapper}>
-
       <div className={styles.container}>
         <div className={styles.containerHeader}>
           <h4>Latest transactions</h4>

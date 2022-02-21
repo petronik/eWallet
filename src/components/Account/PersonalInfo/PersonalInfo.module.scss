@@ -7,7 +7,6 @@
   height: 100%;
   border-radius: 6px;
   font-family: 'Inter', sans-serif;
-
   .avatarWrapper{
     display: flex;
     align-items: center;
@@ -27,7 +26,6 @@
       text-decoration: none;
     }
   }
-
   form{
     display: flex;
     flex-direction: column;
@@ -46,14 +44,12 @@
         align-items: center;
       }
     }
-
   }
 }
 
 @media screen and (max-width: 768px) {
   .containerInfo{
     padding: 0 10px;
-
     .avatarWrapper{
       display: flex;
       align-items: center;
@@ -78,8 +74,6 @@
           margin: 50px 0;
         }
       }
-
     }
-
   }
 }

@@ -1,12 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import Box  from '@mui/material/Box'
 import TextField from '@mui/material/TextField'
 
 import styles from './PersonalInfo.module.scss'
-
-
-
 
 const PersonalInfo = () => {
   return (
@@ -19,7 +15,6 @@ const PersonalInfo = () => {
     <form
       noValidate
       autoComplete="off"
-    
     >
         <div>
         <TextField
@@ -78,12 +73,7 @@ const PersonalInfo = () => {
         />
         <Link to='/overview' >To report incorrect data</Link>
         </div>
-
     </form>
-
-
-
-
     </div>
   )
 }

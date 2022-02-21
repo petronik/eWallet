@@ -9,25 +9,21 @@ import axios from '../../../api/axios';
 import balanceSlice from '../../../features/balance/balanceSlice';
 
 const FILL_URL = '/transactions/fill'
-
-
 const TopUpAccount = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [fillAmount, setFillAmount] = useState('');
-  // const [ setSuccess] = useState(false);
-  const amountInput = document.querySelector('#amountInput');
   const fillAccount = async () => {
     try{
       const res = await axios.post(FILL_URL,
-        {
-          value: fillAmount,
-        },
-        {
-          headers: {
-            'Authorization' :'Bearer ' + localStorage.getItem('token')
+          {
+            value: fillAmount,
+          },
+          {
+            headers: {
+              'Authorization' :'Bearer ' + localStorage.getItem('token')
+            }
           }
-        }
         )
         console.log(res.data)
         dispatch(balanceSlice.setBalance(res.data.balance))
@@ -36,27 +32,19 @@ const TopUpAccount = () => {
       console.log(err)
     }
   }
-
-
-
-
   const handleSubmit =  (e) => {
     e.preventDefault();
     setFillAmount(e.target[0].value)
-    amountInput.value = '';
-    console.log(fillAmount);
     fillAccount()
-    // setSuccess(true)
-    navigate('topupsuccess' )
-
+    navigate('success' )
   }
-  
-
   const handleCancel = () => {
-    setFillAmount('')
-    amountInput.value = '';
+    try{
+      setFillAmount('')    
+    }catch(err){
+      console.log(err)
+    }
   }
-
   return (
     <div className={styles.transferMain}>
       <div>Top up account <span className={styles.topupInfo}><InfoIcon/></span> </div> 
@@ -68,7 +56,6 @@ const TopUpAccount = () => {
         name='amount'
         variant="outlined" 
         onChange={(e) => setFillAmount(e.target.value)}
-
         />
         <Button 
           sx={{
@@ -76,8 +63,7 @@ const TopUpAccount = () => {
           }}
           type='submit'
           variant='contained'
-          
-          // disabled={amountInput.value == null ? true : false}
+          disabled={fillAmount === ''}
         >
           Top up
         </Button>
@@ -90,7 +76,6 @@ const TopUpAccount = () => {
         >
           Cancel
         </Button>
-        
       </form>
       <Outlet/>
     </div>
