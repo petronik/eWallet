@@ -58,7 +58,9 @@ return (
         <SearchIcon />
         <input type="search" placeholder='Search' />
       </div>
-      <span onClick={()=> setActive(!isActive)} >See all</span>
+      <span onClick={()=> setActive(!isActive)} >
+        {isActive ? 'See all' : 'Hide all'}
+        </span>
     </div>
     <div className={styles.transactionsList}>
       <div className={styles.listItemBox}>
