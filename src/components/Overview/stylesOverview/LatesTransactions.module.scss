@@ -4,8 +4,8 @@
   background: linear-gradient(to bottom, #e8ebef, #fff);
   padding: 1px;
   border-radius: 6px;
-  overflow: auto;
   position: relative;
+  // overflow: hidden;
   max-height: 600px;
   .container {
     background: #fff;
@@ -14,6 +14,9 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      position: sticky ;
+      top: -3px;
+      background: #fff;
       h4{
         flex: 1
       }
@@ -38,6 +41,7 @@
     }
 
     .transactionsList{
+      
       .listItemBox{
         .listItemHeader{
           display: flex;
@@ -96,7 +100,6 @@
 @media only screen and (max-width:768px){
   .containerWrapper{
     max-height: 340px;
-    overflow: auto;
     .container{
       .containerHeader{
         .searchWrapper{
@@ -109,4 +112,7 @@
     }
   }
   
+}
+.overflow{
+  overflow: hidden;
 }

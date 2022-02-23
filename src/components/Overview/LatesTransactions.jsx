@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import SearchIcon from '@mui/icons-material/Search';
 import TopUpIcon from '../../assets/img/TopUpBlack.svg';
 import WithdrawIcon from '../../assets/img/WithdrawGreen.svg';
@@ -44,8 +44,13 @@ const Withdraw = () => {
 }
 
 const LatesTransactions = () => {
+  const [isActive, setActive] = useState(true);
+  useEffect(() => {
+    console.log(isActive)
+
+  }, [isActive])
   return (
-    <div className={styles.containerWrapper}>
+    <div className={`${styles.containerWrapper } ${isActive ? styles.overflow : ''}`}>
       <div className={styles.container}>
         <div className={styles.containerHeader}>
           <h4>Latest transactions</h4>
@@ -53,7 +58,7 @@ const LatesTransactions = () => {
             <SearchIcon/>
           <input type="search" placeholder='Search'/>
           </div>
-          <span>See all</span>
+          <span onClick={() => setActive(!isActive)} >See all</span>
         </div>
       <div className={styles.transactionsList}>
         <div className={styles.listItemBox}>
