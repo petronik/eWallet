@@ -16,11 +16,7 @@ import ConfirmTransaction from './components/Transfers/SendMoney/ConfirmTransact
 import Security from './components/Account/Security/Security';
 
 function App() {
-
-
-
   return (
-
     <Routes>
       <Route path='/' element={ <Layout/> } >
         {/* public routes */}

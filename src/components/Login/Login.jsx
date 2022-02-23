@@ -29,7 +29,7 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [errMsg, setErrMsg] = useState('');
   const [showPassword, setShowPassword] = useState(false);
-  const user = useSelector((state) => state.user.user)
+  // const user = useSelector((state) => state.user.user)
 
   useEffect(() => {
     setErrMsg('');

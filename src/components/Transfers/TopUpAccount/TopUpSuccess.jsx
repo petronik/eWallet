@@ -35,7 +35,7 @@ const TopUpSuccess = () => {
         sx={{
           marginTop: '20px',
         }}
-        onClick ={() => navigate('/transfers/topup')}
+        onClick ={() => navigate('/overview')}
       >
         Back to the main page
       </Button>

@@ -12,12 +12,12 @@ const FILL_URL = '/transactions/fill'
 const TopUpAccount = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [fillAmount, setFillAmount] = useState('');
+  const [fillValue, setFillValue] = useState('');
   const fillAccount = async () => {
     try{
       const res = await axios.post(FILL_URL,
           {
-            value: fillAmount,
+            value: fillValue,
           },
           {
             headers: {
@@ -34,16 +34,14 @@ const TopUpAccount = () => {
   }
   const handleSubmit =  (e) => {
     e.preventDefault();
-    setFillAmount(e.target[0].value)
     fillAccount()
+    setFillValue('')
     navigate('success' )
   }
   const handleCancel = () => {
-    try{
-      setFillAmount('')    
-    }catch(err){
-      console.log(err)
-    }
+    
+      setFillValue('')    
+    
   }
   return (
     <div className={styles.transferMain}>
@@ -54,8 +52,9 @@ const TopUpAccount = () => {
         id="amountInput" 
         label="Enter the amount" 
         name='amount'
+        value={fillValue}
         variant="outlined" 
-        onChange={(e) => setFillAmount(e.target.value)}
+        onChange={(e) => setFillValue(e.target.value)}
         />
         <Button 
           sx={{
@@ -63,7 +62,7 @@ const TopUpAccount = () => {
           }}
           type='submit'
           variant='contained'
-          disabled={fillAmount === ''}
+          disabled={fillValue === ''}
         >
           Top up
         </Button>

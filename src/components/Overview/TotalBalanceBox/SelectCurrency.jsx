@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import   balanceSlice  from '../../../features/balance/balanceSlice';
 import axios from '../../../api/axios';
+import styles from '../stylesOverview/TotalBalanceBox.module.scss'
 
 const BALANCE_URL = '/information/balance';
 const currencies = [
@@ -32,23 +33,11 @@ const SelectCurrency = () => {
 
   const dispatch = useDispatch();
   const balance = useSelector((state) => state.balance.balance)
-  const [currency, setCurrency] = useState(currencies[0].value);
+  const [currency, setCurrency] = useState('usd');
+  const [loader, setLoader] = useState(false);
 
-  const fetchData = async() => {
-    const res = await axios.get(
-      BALANCE_URL,
-        {params: {currency: `${currency}`},
-        headers: {
-          'Authorization' :'Bearer ' + localStorage.getItem('token')
-        }}
-    );
-    dispatch(balanceSlice.actions.setBalance(res.data.balance))
-  }
-
-  useEffect( () => {
-    fetchData()
-
-  }, []);
+  
+  
 
   const getBalance = async () => {
     try{
@@ -61,31 +50,41 @@ const SelectCurrency = () => {
       );
       console.log(`Curency:  ${res.config.params.currency}, Balance: ${res.data.balance}`)
       dispatch(balanceSlice.actions.setBalance(res.data.balance))
-      return res
+      setLoader(true);
     } catch (err) {
       console.log(err)
     }
   }
 
+  useEffect( () => {
+    getBalance()
+  }, [currency]);
 
   const handleChange = (event) => {
     setCurrency(event.target.value);
-    getBalance();
+    setLoader(false)
     console.log(balance)
   };
   return (
-        <select
-          id="select-currency"
-          label="Select"
-          value={currency}
-          onChange={handleChange }
-        >
-          {currencies.map((option) => (
-            <option key={option.value} value={option.value}>
-              {option.label}
-            </option>
-          ))}
-        </select>
+    <div className={styles.itemAmount}>
+      <span>{ loader ? balance : 'Loading...'
+                                  
+                                  
+            }
+      </span>
+      <select
+        id="select-currency"
+        label="Select"
+        value={currency}
+        onChange={handleChange }
+      >
+        {currencies.map((option) => (
+          <option key={option.value} value={option.value}>
+            {option.label}
+          </option>
+        ))}
+      </select>
+    </div>
 
   )
   }
