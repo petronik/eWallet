@@ -6,9 +6,8 @@ import Navbar from './Navbar'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import AuthContext from '../../context/AuthProvider';
 import axios from '../../api/axios';
-
 import styles from './Header.module.scss'
-import logoImage from '../../assets/img/logo.svg'
+import logoImage from '../../assets/img/bankLogo.svg'
 import logIn from '../../assets/img/login.svg'
 
 const LOGOUT_URL = '/user/logout';
@@ -33,12 +32,7 @@ const Header = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
 
   useEffect(() => {
-    
-      localStorage.getItem('username') ? setIsLoggedIn(true) : setIsLoggedIn(false)
-
-    
-    console.log('Login: ' + isLoggedIn)
-    console.log(auth.username)
+    localStorage.getItem('username') ? setIsLoggedIn(true) : setIsLoggedIn(false)
   }, [ auth, isLoggedIn])
 
   const UserAvatar = () => {

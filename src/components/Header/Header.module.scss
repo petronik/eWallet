@@ -121,15 +121,25 @@
 .menuWrapper{
   display: flex;
   flex-direction: column;
-  position: absolute;
+  position: fixed;
   background: #fff;
   z-index: 9;
   padding: 10px;
-  width: 93%;
+  // width: 100%;
+  // height: 100vh;
   left: 0;
-  top: 75px;
+  right:0;
+  bottom: 0;
+  top: 0;
+  transition: 0.5s;
   font-family: 'Helvetica 35 Thin ', sans-serif;
+  .menuHeader{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
   h3{
+    margin: 0 10px;
     font-weight: 500;
   }
   .navMenu{
@@ -137,6 +147,7 @@
     justify-content: flex-start;
     align-items: flex-start;
     flex-direction: column;
+    height: 100vh;
     margin-left: 10px;
     padding-left: 10px;
     line-height: 50px;

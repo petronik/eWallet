@@ -19,7 +19,7 @@ const ALL_TRANSACTIONS_URL = '/transactions';
 const Archive = () => {
   const dispatch = useDispatch();
   const startDate = '2022-01-01';
-  const endDate = '2022-02-20';
+  const endDate = `${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDate()}`;
   const transactions = useSelector((state) => state.allTransactions.allTransactions)
 
   const fetchAlltTransactions = async () => {
