@@ -30,6 +30,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    >span{
+      cursor: pointer;
+    }
     .menu{
       display: flex;
       align-items: center;
@@ -135,6 +138,9 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    >span{
+      cursor:pointer;
+    }
   }
   h3{
     margin: 0 10px;

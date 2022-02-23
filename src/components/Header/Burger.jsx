@@ -3,7 +3,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 
 const Burger = ({toggle, isOpen}) => {
   return (
-    <div onClick={toggle} ><MenuIcon fontSize="large" /></div>
+    <span onClick={toggle} ><MenuIcon fontSize="large" /></span>
   )
 }
 
