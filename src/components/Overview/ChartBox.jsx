@@ -21,8 +21,8 @@ const options = {
 }
 const ChartBox = () => {
   const dispatch = useDispatch();
-  const startDate = '2022-01-01';
-  const endDate = '2022-02-21';
+  const startDate = '2022-02-19';
+  const endDate = '2022-02-20';
   const currency = 'usd'
   const summary = useSelector((state) => 
     state.summary.summary
@@ -32,10 +32,9 @@ const ChartBox = () => {
     datasets: [
       {
         data: [
-                // `${summary.payment_withdraw}`,
-                // `${summary.payment_made}`,
-                // `${summary.payment_fill}`,
-                23,23,45,
+                `${summary.payment_withdraw}`,
+                `${summary.payment_made}`,
+                `${summary.payment_fill}`,
               ],
         backgroundColor: [
           'rgba(0, 0, 0, 0.8)',
@@ -77,7 +76,10 @@ useEffect(() => {
         </div>
         <div className={styles.chartWrapper}>
           <div className={styles.chartDoughnut}>
-            <Doughnut data={data} options={options} />
+            <Doughnut 
+              data={data} 
+              options={options} 
+            />
           </div>
           <div className={styles.chartData}>
             <div className={styles.chartDateRange}>JANUARY 2021 - OCTOBER 2021</div>

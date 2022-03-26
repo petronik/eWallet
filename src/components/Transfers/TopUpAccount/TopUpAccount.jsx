@@ -12,7 +12,7 @@ const FILL_URL = '/transactions/fill'
 const TopUpAccount = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [fillValue, setFillValue] = useState('');
+  const [fillValue, setFillValue] = useState(0);
   const fillAccount = async () => {
     try{
       const res = await axios.post(FILL_URL,
@@ -27,6 +27,7 @@ const TopUpAccount = () => {
         )
         console.log(res.data)
         dispatch(balanceSlice.setBalance(res.data.balance))
+        dispatch(balanceSlice.setFillValue(res.data.fill_value))
       return res
     }catch(err) {
       console.log(err)
@@ -36,6 +37,7 @@ const TopUpAccount = () => {
     e.preventDefault();
     fillAccount()
     setFillValue('')
+    console.log(fillValue)
     navigate('success' )
   }
   const handleCancel = () => {
@@ -49,9 +51,12 @@ const TopUpAccount = () => {
       <p>Amount</p>
       <form onSubmit={handleSubmit} >
         <TextField 
+        type={'number'}
+        // inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
         id="amountInput" 
         label="Enter the amount" 
         name='amount'
+        min={'0'}
         value={fillValue}
         variant="outlined" 
         onChange={(e) => setFillValue(e.target.value)}
@@ -62,7 +67,7 @@ const TopUpAccount = () => {
           }}
           type='submit'
           variant='contained'
-          disabled={fillValue === ''}
+          disabled={fillValue <= 0 }
         >
           Top up
         </Button>

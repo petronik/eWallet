@@ -1,12 +1,14 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 import Button  from '@mui/material/Button'
 import styles from './TopUpSuccess.module.scss'
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-
+// import balanceSlice from '../../../features/balance/balanceSlice';
 
 const TopUpSuccess = () => {
   const navigate = useNavigate();
+  const fillValue = useSelector((state) => state.balance.fill_value)
   return (
     <section className={styles.sectionTopUpSuccess}>
       <div className={styles.bgsuccess} >
@@ -24,7 +26,7 @@ const TopUpSuccess = () => {
         />
       </div>
       <div className={styles.sectionTopUpSuccess__wrapper}>
-      <p>Your account has been successfully <br/> topped up for $3 400.00</p>
+      <p>Your account has been successfully <br/> topped up for ${fillValue}</p>
       <Button
       variant='contained'
       onClick ={ ()=> navigate(-1)}

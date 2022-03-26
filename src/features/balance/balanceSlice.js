@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
   balance: 0,
+  fill_value: 0,
 
 }
 // const BALANCE_URL = '/information/balance';
@@ -27,6 +28,9 @@ export const balanceSlice = createSlice({
   reducers: {
     setBalance: (state, action) => {
       state.balance = action.payload
+    },
+    setFillValue: (state, action) => {
+      state.fill_value = action.payload
     },
     
 

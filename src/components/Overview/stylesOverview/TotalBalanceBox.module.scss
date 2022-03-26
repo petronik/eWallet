@@ -46,19 +46,30 @@
       background: rgba(28, 48, 74, 0.5);
       border-radius: 4px;
       font-size: 0.8em;
-      .meter{
-        height: 4px;
+      meter {
         width: 100%;
-        margin: 8px 0;
-        background: #F9A000;
-        border-radius: 2px;
-        .meterProgress{
-          display: block;
-          height: 4px;
-          background: #15C15D;
-
+        &::-webkit-meter-bar{
+          background: none;
+          background-color: #F9A000;
+          border: 0;
+        }
+        &::-webkit-meter-optimum-value{
+          background-color: #15C15D;
         }
       }
+      // .meter{
+      //   height: 4px;
+      //   width: 100%;
+      //   margin: 8px 0;
+      //   background: #F9A000;
+      //   border-radius: 2px;
+      //   .meterProgress{
+      //     display: block;
+      //     height: 4px;
+      //     background: #15C15D;
+      //     width: 100px;
+      //   }
+      // }
     }
 
   }
